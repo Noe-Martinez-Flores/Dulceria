@@ -1,0 +1,84 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: noemt
+  Date: 20/07/2021
+  Time: 05:27 p. m.
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="http://fonts.cdnfonts.com/css/chicken-soup" rel="stylesheet">
+    <title>Dulceria</title>
+</head>
+
+<body>
+<style>
+    @import url('http://fonts.cdnfonts.com/css/chicken-soup?styles=65478');
+</style>
+
+<header>
+    <div class="fixed-top">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-danger p-4">
+                <h5 class="text-white h4">Cajero</h5>
+                <a class="nav-link active" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-danger">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h3>Cajero</h3>
+        </nav>
+    </div>
+</header>
+<section class="container-fluid topCard">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="../index.html" role="tab" aria-controls="home" aria-selected="true">inventario</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">ventas</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">paquetes</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">esta seccion lleva la administracion de inventario</div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">esta seccion es para las ventas</div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">en esta seccion se arman los paquetes de dulces</div>
+    </div>
+</section>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+</script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js"
+        crossorigin="anonymous"></script>
+<script src="../js/candy.js"></script>
+<script>
+    feather.replace()
+</script>
+</body>
+
+</html>

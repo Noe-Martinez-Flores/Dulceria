@@ -1,0 +1,25 @@
+
+
+.topCard{
+    margin-top: 5em;
+   
+}
+.bodyBg {
+    background: url(../assets/bgcandy.jpg); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: 100vh;
+  }
+
+body{
+  
+    font-family: 'Chicken Soup';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 150%;
+    src:  url('https://fonts.cdnfonts.com/s/37917/Chicken Soup.woff') format('woff');
+
+
+}
+

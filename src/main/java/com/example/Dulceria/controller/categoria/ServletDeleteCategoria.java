@@ -1,0 +1,33 @@
+package com.example.Dulceria.controller.categoria;
+
+import com.example.Dulceria.model.categoria.Categoria;
+import com.example.Dulceria.model.categoria.DaoCategoria;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
+import java.io.IOException;
+
+@WebServlet(name = "ServletDeleteCategoria", value = "/ServletDeleteCategoria")
+public class ServletDeleteCategoria extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("listCategorias", new DaoCategoria().findAll());
+        request.getRequestDispatcher("/WEB-INF/screens/categoria/tableCategoria.jsp").forward(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        DaoCategoria daoCategoria = new DaoCategoria();
+
+
+        int id=Integer.parseInt(request.getParameter("id"));
+
+        if(daoCategoria.deleteCategoria(id)){
+            request.setAttribute("message","Categoria eliminada");
+        } else {
+            request.setAttribute("message","Error al eliminar");
+        }
+        doGet(request,response);
+    }
+}

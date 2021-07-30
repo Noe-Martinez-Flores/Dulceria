@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: noemt
-  Date: 26/07/2021
-  Time: 07:41 p. m.
+  Date: 29/07/2021
+  Time: 07:38 p. m.
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Dulcería | Lista de marcas</title>
+    <title>Dulcería | Lista de categorias</title>
     <link rel="stylesheet" href="<%=context%>/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=context%>/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -50,7 +50,7 @@
 </header>
 <div class=" container ">
     <header>
-        <h2> <i class="fas fa-user-alt"></i>Gestion de Marcas</h2>
+        <h2> <i class="fas fa-user-alt"></i> Gestion de Categorias </h2>
         <hr class="bg-primary">
     </header>
     <div class="row">
@@ -58,7 +58,7 @@
             <section>
                 <div class="card">
                     <div class="card-header">
-                        Marcas Registradas
+                        Categorias Registradas
                     </div>
                     <div>
 
@@ -77,23 +77,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${listMarcas}" var="marcas" varStatus="status">
+                            <c:forEach items="${listCategorias}" var="categorias" varStatus="status">
                                 <tr>
                                     <td>${status.count}</td>
 
-                                   <td>${marcas.marcaProducto}</td>
+                                    <td>${categorias.nombreCategoria}</td>
 
 
                                     <td class="text-center">
-                                        <form method="get" action="<%=context%>/ServletUpdateMarcas">
-                                            <input type="hidden" name="id" value="${marcas.id}">
+                                        <form method="get" action="<%=context%>/ServletUpdateCategorias">
+                                            <input type="hidden" name="id" value="${categorias.id}">
                                             <button title="Modificar" class="btn btn-outline-warning"><i class="fas fa-edit"></i></button>
                                         </form>
                                     </td>
 
                                     <td class="text-center">
-                                        <form method="post" action="<%=context%>/ServletEliminarMarcas">
-                                            <input type="hidden" name="id" value="${marcas.id}">
+                                        <form method="post" action="<%=context%>/ServletDeleteCategoria">
+                                            <input type="hidden" name="id" value="${categorias.id}">
                                             <button title="Eliminar" class="btn btn-outline-danger"><i class="fas fa-times"></i></button>
                                         </form>
                                     </td>

@@ -1,16 +1,22 @@
 package com.example.Dulceria.model.marca;
 
+import com.example.Dulceria.model.categoria.Categoria;
+import com.example.Dulceria.model.categoria.DaoCategoria;
 import com.example.Dulceria.util.ConnectionMySQL;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DaoMarcas {
     Connection con;
-    PreparedStatement pstm; //kery sentencias de sql , lento pero seguro
-    Statement statement; //se utiliza para realizar consultas , rapido pero inseguro
-    ResultSet rs; //navega a travez de los indices para la consulta
+    //query sentencias de sql , lento pero seguro
+    PreparedStatement pstm;
+    //se utiliza para realizar consultas , rapido pero inseguro
+    Statement statement;
+    //navega a travez de los indices para la consulta
+    ResultSet rs;
 
 
     public boolean createMarca (Marcas marcas){
@@ -30,21 +36,21 @@ public class DaoMarcas {
         return state;
     }
 
-
-    public boolean updateMarca (Marcas marcas){  //C copio el codigo de createPerson
-        boolean state = false;
+    public boolean updateMarca (Marcas marcas){
+        boolean stateUpdateMarca = false;
         try {
             con = ConnectionMySQL.getConnection();
-            String query = "UPDATE marcas  SET marcas.Marca_del_producto = ? WHERE marcas.id = ?;";
+            String query = "UPDATE marcas SET Marca_del_producto = ? WHERE id = ?;";
             pstm = con.prepareStatement(query);
             pstm.setString(1,marcas.getMarcaProducto());
-            state = pstm.executeUpdate() == 1;
+            pstm.setInt(2, marcas.getId());
+            stateUpdateMarca = pstm.executeUpdate() == 1;
         }catch (SQLException ex){
             ex.printStackTrace();
         }finally {
             closeConnection();
         }
-        return state;
+        return stateUpdateMarca;
     }
 
 
@@ -94,14 +100,14 @@ public class DaoMarcas {
         Marcas marcas = new Marcas();
         try{
             con = ConnectionMySQL.getConnection();
-            String query = "SELECT marcas.id, marcas.Marca_del_producto FROM marcas WHERE marcas.id = ?;";
+            String query = "SELECT * FROM marcas WHERE marcas.id = ?;";
             pstm = con.prepareStatement(query);
             pstm.setInt(1,id);
             rs = pstm.executeQuery();
 
             if (rs.next()){
-                marcas.setId(rs.getInt("id"));
-                marcas.setMarcaProducto(rs.getString("nombre"));
+                marcas.setId(rs.getInt(1));
+                marcas.setMarcaProducto(rs.getString(2));
             }
         }catch (SQLException ex){
             ex.printStackTrace();
@@ -112,19 +118,15 @@ public class DaoMarcas {
 
     }
 
-    public static void main(String[] args) {
-        DaoMarcas dao = new DaoMarcas();
-        List<Marcas> list = dao.findAll();
+    public static void main(String[] args) { //test del backend
+        DaoCategoria dao = new DaoCategoria();
+        List<Categoria> list = dao.findAll();
+        for(Categoria xd : list){
+            System.out.println(xd.getId());
+            System.out.println(xd.getNombreCategoria());
 
-        for (Marcas marcas : list){
-            System.out.println(marcas.getId());
-            System.out.println(marcas.getMarcaProducto());
         }
-
     }
-
-
-
 
 
 
@@ -141,8 +143,6 @@ public class DaoMarcas {
             }
         }catch (SQLException ex){
             ex.printStackTrace();
-        }finally {
-
         }
     }
 }

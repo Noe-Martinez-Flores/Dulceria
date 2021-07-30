@@ -36,7 +36,7 @@
                 <h5 class="text-white h3">Administrador</h5>
                 <hr class="">
                 <a class="nav-link active text-white" href="">Principal<span class="sr-only">(current)</span></a>
-                <a class="nav-link text-white" href="<%=context%>/ServletMarcasTable">Gestion Empleados</a>
+                <a class="nav-link text-white" href="<%=context%>/ServletGestionEmpleados">Gestion Empleados</a>
                 <a class="nav-link text-white" href="#">Perfil</a>
                 <a class="nav-link text-white text-right" href="<%=context%>/ServletBackToIndex" tabindex="-1"
                    aria-disabled="true"><i data-feather="power"></i> Cerrar Sesion </a>
@@ -67,12 +67,8 @@
                aria-selected="true">Productos</a>
         </li>
         <li class="nav-item" role="presentation">
-
-        <form action="<%=context%>/ServletMarcas">
             <a class="nav-link" id="marca-tab" data-toggle="tab" href="#marca"  role="tab" aria-controls="marca"
                aria-selected="false" >  Marcas  </a>
-        </form>
-
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
@@ -88,34 +84,28 @@
         <div class="tab-pane fade show active" id="producto" role="tabpanel" aria-labelledby="home-tab">
             <div class="card">
                 <div class="card-body">
-                    <h2>Consultar un producto</h2>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Candy" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
+
                     <br>
                     <table class="table">
                         <thead class="btn-danger">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Producto <a href="<%=context%>/ServletAgregarProducto"
-                                                        class="btn btn-success my-2 my-sm-0" style="margin: right 3rem;"
-                                                        type="submit"> Agregar </a></th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Existencia</th>
-                            <th scope="col">Fecha de caducidad</th>
+
+                            <th style="text-align: center" scope="col">Producto </th>
+
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="align-middle">
-                            <th class="align-middle" scope="row">1</th>
-                            <td class="align-middle">
-                                <button type="button" class="btn" data-toggle="modal" data-target="#productoModal">
-                                    <img style="width: 150px;" src="<%=context%>/assets/bomb.jpg" alt=""></button>
-                            </td>
-                            <td class="align-middle">Bombones</td>
-                            <td class="align-middle">50</td>
-                            <td class="align-middle">07/07/2021</td>
+                        <tr class="align-content-center">
+                            <th style="text-align: center">
+                                <a href="<%=context%>/ServletAgregarCategoria"
+                                   class="btn btn-success my-2 my-sm-0" style="margin: right 3rem;"
+                                   type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
+
+                                <a href="<%=context%>/ServletConsultarCategoria"
+                                   class="btn btn-primary my-2 my-sm-0" style="margin: right 3rem;"
+                                   type="submit"> Consultar <i class="fas fa-search"></i> </a>
+                            </th>
+
                         </tr>
                         </tbody>
                     </table>
@@ -129,51 +119,33 @@
         <div class="tab-pane fade" id="marca" role="tabpanel" aria-labelledby="profile-tab">
             <div class="card">
                 <div class="card-body">
-                    <h2>Consultar Marcas</h2>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Candy" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
+
                     <br>
                     <table class="table table-hover">
                         <thead class="btn-danger">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Marca <a href="<%=context%>/ServletAgregarMarcas"
-                                                     class="btn btn-success my-2 my-sm-0" style="margin: right 3rem;"
-                                                     type="submit">Agregar </a></th>
-                            <th scope="col">Productos asociados</th>
-                            <th scope="col">Modificar</th>
-                            <th scope="col">Eliminar</th>
+
+                            <th style="text-align: center" scope="col">Marca </th>
 
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${listMarcas}" var="marcas" varStatus="status">
-                            <tr>
-                                <td>${status.count}</td>
-                                <td>${marcas.Marca_del_producto}</td>
+                            <tr class="align-content-center">
+                                <th style="text-align: center">
+                                    <a href="<%=context%>/ServletAgregarMarcas"
+                                       class="btn btn-success my-2 my-sm-0" style="margin: right 3rem;"
+                                       type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
 
-                                <td>
-                                    <button type="button" class="btn btn-outline-success" data-toggle="modal"
-                                            data-target="#marcaModal">Productos
-                                    </button>
-                                </td>
-                                <td class="text-center">
-                                    <form method="get" action="<%=context%>/ServletAgregarMarcas">
-                                        <input type="hidden" name="id" value="${marcas.id}">
-                                        <button title="Modificar" class="btn btn-outline-warning"><i
-                                                class="fas fa-edit"></i></button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Eliminar</button>
-                                </td>
+                                    <a href="<%=context%>/ServletMarcasTable"
+                                       class="btn btn-primary my-2 my-sm-0" style="margin: right 3rem;"
+                                       type="submit"> Consultar <i class="fas fa-search"></i> </a>
+                                </th>
+
+
                             </tr>
-                        </c:forEach>
                         </tbody>
-                    </table>
 
+                    </table>
 
                 </div>
             </div>
@@ -181,44 +153,25 @@
         <div class="tab-pane fade" id="categoria" role="tabpanel" aria-labelledby="contact-tab">
             <div class="card">
                 <div class="card-body">
-                    <h2>Consultar Categorias</h2>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Candy" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
+
                     <br>
                     <table class="table">
                         <thead class="btn-danger">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Categoria
-                                <a  href="<%=context%>/ServletAgregarCategoria" class="btn btn-success my-2 my-sm-0" style="margin: right 3rem;" type="submit">
-                                    Agregar
-                                </a>
-                            </th>
-                            <th scope="col">Productos asociados</th>
-                            <th scope="col">Modificar</th>
-                            <th scope="col">Eliminar</th>
-
+                            <th style="text-align: center" scope="col">Categoria</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Bombones</td>
-                            <td class="align-middle">
-                                <button type="button" class="btn btn-outline-success" data-toggle="modal"
-                                        data-target="#categoriaModal">
-                                    Productos
-                                </button>
-                            </td>
+                        <tr class="align-content-center">
+                            <th style="text-align: center">
+                                <a href="<%=context%>/ServletAgregarCategoria"
+                                   class="btn btn-success my-2 my-sm-0" style="margin: right 3rem;"
+                                   type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
 
-                            <td>
-                                <button type="button" class="btn btn-warning">Modificar</button>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Eliminar</button>
-                            </td>
+                                <a href="<%=context%>/ServletConsultarCategoria"
+                                   class="btn btn-primary my-2 my-sm-0" style="margin: right 3rem;"
+                                   type="submit"> Consultar <i class="fas fa-search"></i> </a>
+                            </th>
 
                         </tr>
                         </tbody>

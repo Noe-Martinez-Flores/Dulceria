@@ -19,7 +19,7 @@ public class DaoCategoria {
             con = ConnectionMySQL.getConnection();
             String query = "INSERT INTO categorias (categorias.Nombre_de_la_categoria) VALUES (?);";
             pstm = con.prepareStatement(query);
-            pstm.setString(1,categoria.getNombre_de_la_categoria());
+            pstm.setString(1,categoria.getNombreCategoria());
 
             state = pstm.executeUpdate() == 1;
         }catch (SQLException ex){
@@ -30,13 +30,14 @@ public class DaoCategoria {
         return state;
     }
 
-    public boolean updateCategoria (Categoria categoria){  //C copio el codigo de createPerson
+    public boolean updateCategoria (Categoria categoria){
         boolean state = false;
         try {
             con = ConnectionMySQL.getConnection();
-            String query = " UPDATE categorias  SET categorias.Nombre_de_la_categoria = ? WHERE categorias.id = ?;";
+            String query = "UPDATE categorias  SET categorias.Nombre_de_la_categoria = ? WHERE categorias.id = ?;";
             pstm = con.prepareStatement(query);
-            pstm.setString(1,categoria.getNombre_de_la_categoria());
+            pstm.setString(1,categoria.getNombreCategoria());
+            pstm.setInt(2,categoria.getId());
             state = pstm.executeUpdate() == 1;
         }catch (SQLException ex){
             ex.printStackTrace();
@@ -75,7 +76,7 @@ public class DaoCategoria {
             while  (rs.next()){
                 Categoria categoria = new Categoria();
                 categoria.setId(rs.getInt("id"));
-                categoria.setNombre_de_la_categoria(rs.getString("Nombre_de_la_categoria"));
+                categoria.setNombreCategoria(rs.getString("Nombre_de_la_categoria"));
 
                 listCategorias.add(categoria);
             }
@@ -85,6 +86,28 @@ public class DaoCategoria {
             closeConnection();
         }
         return listCategorias;
+
+    }
+
+    public Categoria findById (int id){
+        Categoria categoria = new Categoria();
+        try{
+            con = ConnectionMySQL.getConnection();
+            String query = "SELECT * FROM categorias WHERE categorias.id = ?;";
+            pstm = con.prepareStatement(query);
+            pstm.setInt(1,id);
+            rs = pstm.executeQuery();
+
+            if (rs.next()){
+                categoria.setId(rs.getInt(1));
+                categoria.setNombreCategoria(rs.getString(2));
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        return categoria;
 
     }
 

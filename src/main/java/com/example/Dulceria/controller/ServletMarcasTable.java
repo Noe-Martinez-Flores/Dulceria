@@ -12,11 +12,7 @@ import java.io.IOException;
 public class ServletMarcasTable extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getParameter("id") != null){
-            int id = Integer.parseInt(request.getParameter("id"));
-            request.setAttribute("aMarca", new DaoMarcas().findById(id));
-            request.getRequestDispatcher("/WEB-INF/view/actualizarMarcas.jsp").forward(request,response);
-        }
+
         request.setAttribute("listMarcas", new DaoMarcas().findAll());
         request.getRequestDispatcher("/WEB-INF/screens/tablaMarcas.jsp").forward(request,response);
     }

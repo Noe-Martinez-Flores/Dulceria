@@ -4,11 +4,10 @@ public class Marcas {
     private  int id;
     private String marcaProducto;
 
+    //Constructor implicito
+    public Marcas (){}
 
-    public Marcas (){
-
-    }
-
+    // Constructor explicito
     public Marcas(int id, String marcaProducto) {
         this.id = id;
         this.marcaProducto = marcaProducto;

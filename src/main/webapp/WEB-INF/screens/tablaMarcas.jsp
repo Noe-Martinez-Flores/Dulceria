@@ -10,7 +10,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Tabla</title>
+    <title>Dulcería | Lista de marcas</title>
     <link rel="stylesheet" href="<%=context%>/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=context%>/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -27,7 +27,7 @@
             <div class="bg-danger p-4">
                 <h5 class="text-white h3">Administrador</h5>
                 <hr class="">
-                <a class="nav-link active text-white" href="">Principal<span class="sr-only">(current)</span></a>
+                <a class="nav-link active text-white" href="<%=context%>/ServletBackToAdminInicio">Principal<span class="sr-only">(current)</span></a>
                 <a class="nav-link text-white" href="<%=context%>/ServletMarcasTable">Gestion Empleados</a>
                 <a class="nav-link text-white" href="#">Perfil</a>
                 <a class="nav-link text-white text-right" href="<%=context%>/ServletBackToIndex" tabindex="-1"
@@ -48,7 +48,7 @@
         </nav>
     </div>
 </header>
-<div class=" container-fluid">
+<div class=" container ">
     <header>
         <h2> <i class="fas fa-user-alt"></i>Gestion de Marcas</h2>
         <hr class="bg-primary">
@@ -60,13 +60,17 @@
                     <div class="card-header">
                         Marcas Registradas
                     </div>
+                    <div>
+
+                    </div>
                     <div class="card-body">
                         <table class="table table-hover">
-                            <thead class="bg-primary"> <!-- Sirve para titulos de la cabecera de la tabla -->
+                            <!-- Define el color de fondo en la cabecera de la tabla -->
+                            <thead  style="background: #ed7074">
                             <tr>
                                 <td>#</td>
                                 <td>Nombre</td>
-                                <td class="text-center">Detalles</td>
+
                                 <td class="text-center">Modificar</td>
                                 <td class="text-center"> Eliminar</td>
 
@@ -76,23 +80,19 @@
                             <c:forEach items="${listMarcas}" var="marcas" varStatus="status">
                                 <tr>
                                     <td>${status.count}</td>
+
                                    <td>${marcas.marcaProducto}</td>
 
 
                                     <td class="text-center">
-                                        <button title="Detalles" class="btn btn-outline-info"><i class="fas fa-search"></i></button>
-
-                                    </td>
-
-                                    <td class="text-center">
-                                        <form method="get" action="<%=context%>/ServletMarcasTable">
+                                        <form method="get" action="<%=context%>/ServletUpdateMarcas">
                                             <input type="hidden" name="id" value="${marcas.id}">
                                             <button title="Modificar" class="btn btn-outline-warning"><i class="fas fa-edit"></i></button>
                                         </form>
                                     </td>
 
                                     <td class="text-center">
-                                        <form method="post" action="<%=context%>/ServletDeletePerson">
+                                        <form method="post" action="<%=context%>/ServletEliminarMarcas">
                                             <input type="hidden" name="id" value="${marcas.id}">
                                             <button title="Eliminar" class="btn btn-outline-danger"><i class="fas fa-times"></i></button>
                                         </form>

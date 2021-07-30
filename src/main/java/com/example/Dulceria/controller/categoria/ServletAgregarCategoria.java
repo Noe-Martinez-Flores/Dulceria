@@ -1,4 +1,4 @@
-package com.example.Dulceria.controller;
+package com.example.Dulceria.controller.categoria;
 
 import com.example.Dulceria.model.categoria.Categoria;
 import com.example.Dulceria.model.categoria.DaoCategoria;
@@ -14,7 +14,8 @@ import java.io.IOException;
 public class ServletAgregarCategoria extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/screens/agregarCategoria.jsp").forward(request,response);
+
+        request.getRequestDispatcher("/WEB-INF/screens/categoria/agregarCategoria.jsp").forward(request,response);
     }
 
     @Override
@@ -22,10 +23,10 @@ public class ServletAgregarCategoria extends HttpServlet {
         DaoCategoria dao = new DaoCategoria();
         Categoria categoria = new Categoria();
 
-        categoria.setNombre_de_la_categoria(request.getParameter("Nombre_de_la_categoria"));
+        categoria.setNombreCategoria(request.getParameter("Nombre_de_la_categoria"));
 
         if (dao.createCategoria(categoria)) {
-            request.setAttribute("message", "Persona Registrada");
+            request.setAttribute("message", "Categoria Registrada");
         } else {
             request.setAttribute("message", "Error al registrar");
         }

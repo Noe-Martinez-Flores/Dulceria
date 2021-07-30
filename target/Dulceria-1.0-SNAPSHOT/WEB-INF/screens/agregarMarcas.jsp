@@ -47,7 +47,7 @@
         </nav>
     </div>
 </header>
-<div  style="margin-top: 4rem;"><a href="<%=context%>/ServletInicioAdmin">Consultas</a><span>/ Agregar nuevo</span></div>
+<div  style="margin-top: 4rem;"><a href="<%=context%>/ServletInicioAdmin"><i style="color: #fd7e14" class="fas fa-chevron-circle-left"></i> </a><span>/ Agregar nuevo</span></div>
 <div class="container">
     <form action="<%=context%>/ServletAgregarMarcas" method="post">
         <div class="row">
@@ -55,8 +55,9 @@
                 <label class=""  > Nueva Marca </label>
                 <input type="text" id="Marca_del_producto" name="Marca_del_producto" class="form-control" placeholder="Nombre de la Marca">
             </div>
-
-            <button type="submit" class="btn btn-primary"><h4> ¡Registrar! </h4>> </button>
+        </div>
+        <div style="text-align: center" class="col-12 pt-2">
+            <button  type="submit" class="btn btn-primary size-font-button"> ¡Agregar! </button>
         </div>
     </form>
 </div>

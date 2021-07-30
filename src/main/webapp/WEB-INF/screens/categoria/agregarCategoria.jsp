@@ -1,8 +1,8 @@
-<%@ page import="com.example.Dulceria.model.marca.Marcas" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: noemt
-  Date: 27/07/2021
-  Time: 06:58 p. m.
+  Date: 26/07/2021
+  Time: 08:08 p. m.
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -47,17 +47,20 @@
         </nav>
     </div>
 </header>
-<div  style="margin-top: 4rem;"><a href="<%=context%>/ServletInicioAdmin">Consultas</a><span>/ Agregar nuevo</span></div>
+<div  style="margin-top: 4rem;"><a href="<%=context%>/ServletInicioAdmin"><i style="color: #fd7e14" class="fas fa-chevron-circle-left"></i></a><span>/ Agregar nuevo</span></div>
 <div class="container">
-    <%Marcas marcas = (Marcas) request.getAttribute("aMarca");%>
-    <form action="<%=context%>/ServletUpdateMarcas" method="post">
+    <form action="<%=context%>/ServletAgregarCategoria" method="post">
         <div class="row">
             <div class="col text-center">
-                <label class="" for="" > Nueva Marca </label>
-                <input type="text" id="Marca_del_producto" name="Marca_del_producto" class="form-control" value="<%=marcas.getMarcaProducto()%>" placeholder="Nombre de la Marca">
+                <label class="" for="" > Nueva Categoria </label>
+                <input type="text" id="Nombre_de_la_categoria" name="Nombre_de_la_categoria" class="form-control" placeholder="Nombre de la Categoria">
             </div>
 
-            <button type="submit" class="btn btn-primary"><h4> ¡Modificar! </h4>> </button>
+
+        </div>
+
+        <div style="text-align: center" class="col-12 pt-2">
+            <button  type="submit" class="btn btn-primary size-font-button"> ¡Agregar! </button>
         </div>
     </form>
 </div>

@@ -1,8 +1,8 @@
-<%--
+<%@ page import="com.example.Dulceria.model.categoria.Categoria" %><%--
   Created by IntelliJ IDEA.
   User: noemt
-  Date: 26/07/2021
-  Time: 08:08 p. m.
+  Date: 29/07/2021
+  Time: 07:50 p. m.
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -47,16 +47,19 @@
         </nav>
     </div>
 </header>
-<div  style="margin-top: 4rem;"><a href="<%=context%>/ServletInicioAdmin">Consultas</a><span>/ Agregar nuevo</span></div>
+<div  style="margin-top: 4rem;"><a href="<%=context%>/ServletConsultarCategoria"><i style="color: #fd7e14" class="fas fa-chevron-circle-left"></i></a><span>/ Agregar nuevo</span></div>
 <div class="container">
-    <form action="<%=context%>/ServletAgregarCategoria" method="post">
+    <%Categoria categoria = (Categoria) request.getAttribute("categoriaUpdate");%>
+    <form action="<%=context%>/ServletUpdateCategorias" method="post">
         <div class="row">
             <div class="col text-center">
-                <label class="" for="" > Nueva Categoria </label>
-                <input type="text" id="Nombre_de_la_categoria" name="Nombre_de_la_categoria" class="form-control" placeholder="Nombre de la Categoria">
+                <label class="" for="" > Actualizar Categoria </label>
+                <input type="hidden" name="id" value="<%=categoria.getId()%>">
+                <input type="text" id="Nombre_de_la_categoria" name="Nombre_de_la_categoria" class="form-control" value="<%=categoria.getNombreCategoria()%>" placeholder="Nombre de la Categoria">
             </div>
-
-            <button type="submit" class="btn btn-primary"><h4> ¡Registrar! </h4>> </button>
+        </div>
+        <div style="text-align: center" class="col-12 pt-2">
+            <button  type="submit" class="btn btn-primary size-font-button"> ¡Modificar! </button>
         </div>
     </form>
 </div>

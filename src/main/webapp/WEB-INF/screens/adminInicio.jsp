@@ -36,7 +36,7 @@
                 <h5 class="text-white h3">Administrador</h5>
                 <hr class="">
                 <a class="nav-link active text-white" href="">Principal<span class="sr-only">(current)</span></a>
-                <a class="nav-link text-white" href="<%=context%>/ServletGestionEmpleados">Gestion Empleados</a>
+                <a class="nav-link text-white" href="<%=context%>/ServletCajeroInicio">Gestion Empleados</a>
                 <a class="nav-link text-white" href="#">Perfil</a>
                 <a class="nav-link text-white text-right" href="<%=context%>/ServletBackToIndex" tabindex="-1"
                    aria-disabled="true"><i data-feather="power"></i> Cerrar Sesion </a>

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class ConnectionMySQL {
     public static Connection getConnection() throws SQLException {
         DriverManager.registerDriver(new Driver());
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/dulceria?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","2252");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/dulceria?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","megadeth");
 
     }
 

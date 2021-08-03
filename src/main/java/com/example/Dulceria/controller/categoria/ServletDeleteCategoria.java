@@ -13,7 +13,7 @@ public class ServletDeleteCategoria extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("listCategorias", new DaoCategoria().findAll());
-        request.getRequestDispatcher("/WEB-INF/screens/categoria/tableCategoria.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/screens/adminInicioCategoria.jsp").forward(request,response);
     }
 
     @Override

@@ -47,7 +47,7 @@
         </nav>
     </div>
 </header>
-<div  style="margin-top: 4rem;"><a href="<%=context%>/ServletInicioAdmin"><i style="color: #fd7e14" class="fas fa-chevron-circle-left"></i> </a><span>/ Agregar nuevo</span></div>
+<div  style="margin-top: 4rem;"><a href="<%=context%>/ServletMarcasTable"><i style="color: #fd7e14" class="fas fa-chevron-circle-left"></i> </a><span>/ Agregar nuevo</span></div>
 <div class="container">
     <form action="<%=context%>/ServletAgregarMarcas" method="post">
         <div class="row">

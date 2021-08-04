@@ -51,7 +51,7 @@
             <a class="navbar-brand" href="#">
                 <img src="<%=context%>/assets/calAzuc.png" width="30" height="30" class="d-inline-block align-top"
                      alt="">
-                <span class="textTitle"> La calaverita de azúcar</span>
+                <span class="text-white h3 "> La calaverita de azúcar</span>
             </a>
         </nav>
     </div>
@@ -93,6 +93,7 @@
                 <div class="card-body">
 
                     <br>
+                    <div class="table-responsive">
                     <table class="table table-hover">
                         <!-- Define el color de fondo en la cabecera de la tabla -->
                         <thead  style="background: #ed7074">
@@ -133,6 +134,7 @@
                         </c:forEach>
                         </tbody>
                     </table>
+
                     <!-- Button trigger modal -->
 
 

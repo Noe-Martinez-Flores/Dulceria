@@ -116,7 +116,7 @@
                                 <td class="text-center">
                                     <form method="get" action="<%=context%>/ServletUpdateMarcas">
                                         <input type="hidden" name="id" value="${marcas.id}">
-                                        <button title="Modificar" style=" height:100%; width: 250px; "
+                                        <button title="Modificar" style=" height:100%; width: 43%; "
                                                 class="btn btn-outline-warning size-font-button"><i
                                                 class="fas fa-edit"></i></button>
                                     </form>
@@ -125,7 +125,7 @@
                                 <td class="text-center">
                                     <form method="post" action="<%=context%>/ServletEliminarMarcas">
                                         <input type="hidden" name="id" value="${marcas.id}">
-                                        <button title="Eliminar" style=" height:100%; width: 250px; "
+                                        <button title="Eliminar" style=" height:100%; width: 50%; "
                                                 class="btn btn-outline-danger size-font-button"><i
                                                 class="fas fa-times"></i></button>
                                     </form>

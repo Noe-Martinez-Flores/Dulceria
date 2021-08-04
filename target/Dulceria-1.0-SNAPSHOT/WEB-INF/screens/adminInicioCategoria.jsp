@@ -62,11 +62,11 @@
     <h1>Bienvenido <span></span></h1>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="producto-tab" type="submit" href="<%=context%>/ServletInicioAdmin" > Productos </a>
+            <a class="nav-link" id="producto-tab" type="submit" href="<%=context%>/ServletInicioAdmin"> Productos </a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="marca-tab" type="submit"  href="<%=context%>/ServletMarcasTable"
-            >  Marcas  </a>
+            <a class="nav-link" id="marca-tab" type="submit" href="<%=context%>/ServletMarcasTable"
+            > Marcas </a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
@@ -89,51 +89,53 @@
                     <div class="card-header col-6 text-right">
                         <a href="<%=context%>/ServletAgregarCategoria"
                            class="btn btn-success my-2 my-sm-0 size-font-button" style="margin: right 3rem;"
-                           type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
-                    </div></div>
+                           type="submit"> Agregar <i class="fas fa-plus"></i> </a>
+                    </div>
+                </div>
                 <div class="card-body">
 
                     <br>
-                            <table class="table table-hover">
+                    <table class="table table-hover">
 
-                                <thead  style="background: #ed7074">
-                                <tr>
-                                    <td>#</td>
-                                    <td> Nombre</td>
+                        <thead style="background: #ed7074">
+                        <tr>
+                            <td>#</td>
+                            <td> Nombre</td>
 
-                                    <td class="text-center" >Modificar</td>
-                                    <td class="text-center"> Eliminar</td>
+                            <td class="text-center">Modificar</td>
+                            <td class="text-center"> Eliminar</td>
 
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${listCategorias}" var="categorias" varStatus="status">
-                                    <tr>
-                                        <td>${status.count}</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${listCategorias}" var="categorias" varStatus="status">
+                            <tr>
+                                <td>${status.count}</td>
 
-                                        <td>${categorias.nombreCategoria}</td>
-
-
-                                        <td class="text-center">
-                                            <form method="get" action="<%=context%>/ServletUpdateCategorias">
-                                                <input type="hidden" name="id" value="${categorias.id}">
-                                                <button title="Modificar"  style=" height:100%; max-width: 250px; min-width: 50%; " class="btn btn-outline-warning size-font-button"><i class="fas fa-edit"></i></button>
-                                            </form>
-                                        </td>
-
-                                        <td class="text-center">
-                                            <form method="post" action="<%=context%>/ServletDeleteCategoria">
-                                                <input type="hidden" name="id" value="${categorias.id}">
-                                                <button title="Eliminar" style=" height:100%; max-width: 250px; min-width: 50%; " class="btn btn-outline-danger size-font-button"><i class="fas fa-times"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
+                                <td>${categorias.nombreCategoria}</td>
 
 
+                                <td class="text-center">
+                                    <form method="get" action="<%=context%>/ServletUpdateCategorias">
+                                        <input type="hidden" name="id" value="${categorias.id}">
+                                        <button title="Modificar" style=" height:100%; width: 43%; "
+                                        " class="btn btn-outline-warning size-font-button"><i
+                                            class="fas fa-edit"></i></button>
+                                    </form>
+                                </td>
 
+                                <td class="text-center">
+                                    <form method="post" action="<%=context%>/ServletDeleteCategoria">
+                                        <input type="hidden" name="id" value="${categorias.id}">
+                                        <button title="Eliminar" style=" height:100%; width: 50%; "
+                                                class="btn btn-outline-danger size-font-button"><i
+                                                class="fas fa-times"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
 
 
                 </div>

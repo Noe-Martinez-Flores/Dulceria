@@ -41,7 +41,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 col-md-3 text-center " >
-            <img  width="70%" src="<%=context%>/assets/calAzuc.png" alt="">
+            <img  width="70%" src="<%=context%>/assets/calAzuc.png" alt="calavera">
         </div>
         <div class="col-12 col-md-6 " >
             <section id=" login">

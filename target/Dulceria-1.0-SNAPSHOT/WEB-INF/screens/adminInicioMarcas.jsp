@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: noemt
-  Date: 20/07/2021
-  Time: 05:25 p. m.
+  User: familia
+  Date: 02/08/2021
+  Time: 07:48 p. m.
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -62,13 +62,11 @@
     <h1>Bienvenido <span></span></h1>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link " id="producto-tab" data-toggle="tab" href="#producto" role="tab"
-               aria-controls="producto"
-               aria-selected="true">Productos</a>
+            <a class="nav-link" id="producto-tab" type="submit" href="<%=context%>/ServletInicioAdmin"> Productos </a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="marca-tab" type="submit"  href="<%=context%>/ServletMarcasTable"
-                >  Marcas  </a>
+            <a class="nav-link" id="marca-tab" data-toggle="tab" href="#marca" role="tab" aria-controls="marca"
+               aria-selected="false"> Marcas </a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="categoria-tab" type="submit" href="<%=context%>/ServletConsultarCategoria">Categorias</a>
@@ -79,97 +77,112 @@
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="producto" role="tabpanel" aria-labelledby="home-tab">
-            <div class="card">
+
+        <div class="tab-pane fade show active" id="marca" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="card ">
                 <div class="row">
                     <div class="card-header col-6">
-                        Productos Registrados
+                        Marcas Registradas
                     </div>
                     <div class="card-header col-6 text-right">
-                        <a href="<%=context%>/ServletAgregarCategoria"
+                        <a href="<%=context%>/ServletAgregarMarcas"
                            class="btn btn-success my-2 my-sm-0 size-font-button" style="margin: right 3rem;"
-                           type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
-                    </div></div>
+                           type="submit"> Agregar <i class="fas fa-plus"></i> </a>
+                    </div>
+                </div>
                 <div class="card-body">
 
                     <br>
                     <table class="table table-hover">
-                        <!-- Define el color de fondo en la cabecera de la tabla -->
-                        <thead  style="background: #ed7074">
 
+                        <thead style="background: #ed7074">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Producto </th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Existencia</th>
-                            <th scope="col">Fecha de caducidad</th>
-                        </tr>
-                        </thead>
+                            <td>#</td>
+                            <td> Nombre</td>
+
+                            <td class="text-center">Modificar</td>
+                            <td class="text-center"> Eliminar</td>
 
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${listCategorias}" var="categorias" varStatus="status">
+                        <c:forEach items="${listMarcas}" var="marcas" varStatus="status">
                             <tr>
                                 <td>${status.count}</td>
 
-                                <td>${categorias.nombreCategoria}</td>
+                                <td>${marcas.marcaProducto}</td>
 
 
                                 <td class="text-center">
-                                    <form method="get" action="<%=context%>/ServletUpdateCategorias">
-                                        <input type="hidden" name="id" value="${categorias.id}">
-                                        <button title="Modificar" class="btn btn-outline-warning"><i class="fas fa-edit"></i></button>
+                                    <form method="get" action="<%=context%>/ServletUpdateMarcas">
+                                        <input type="hidden" name="id" value="${marcas.id}">
+                                        <button title="Modificar" style=" height:100%; width: 43%; "
+                                                class="btn btn-outline-warning size-font-button"><i
+                                                class="fas fa-edit"></i></button>
                                     </form>
                                 </td>
 
                                 <td class="text-center">
-                                    <form method="post" action="<%=context%>/ServletDeleteCategoria">
-                                        <input type="hidden" name="id" value="${categorias.id}">
-                                        <button title="Eliminar" class="btn btn-outline-danger"><i class="fas fa-times"></i></button>
+                                    <form method="post" action="<%=context%>/ServletEliminarMarcas">
+                                        <input type="hidden" name="id" value="${marcas.id}">
+                                        <button title="Eliminar" style=" height:100%; width: 50%; "
+                                                class="btn btn-outline-danger size-font-button"><i
+                                                class="fas fa-times"></i></button>
                                     </form>
                                 </td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
-                    <!-- Button trigger modal -->
-
 
                 </div>
-
             </div>
         </div>
 
     </div>
 </section>
-<!-- Modal -->
-<div class="modal fade" id="productoModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+
+<div class="modal " id="marcaModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="tittle1">Detalles</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <label class="text-center" value="">Nombre</label>
-                <br>
-                <img style="width: 150px;" src="<%=context%>/assets/bomb.jpg" alt="">
+    <div class="">
+        <div class="container">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tittle2">Productos asociados</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead class="bg-danger">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Nombre</th>
 
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-warning">Modificar</button>
-                <button type="button" class="btn btn-danger">Eliminar</button>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="align-middle">
+                            <th class="align-middle" scope="row">1</th>
+                            <td class="align-middle">
+                                <img style="width: 150px;" src="<%=context%>/assets/bomb.jpg" alt="">
+                            </td>
+                            <td class="align-middle">Bombones</td>
 
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

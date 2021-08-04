@@ -67,13 +67,11 @@
                aria-selected="true">Productos</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="marca-tab" data-toggle="tab" href="#marca"  role="tab" aria-controls="marca"
-               aria-selected="false" >  Marcas  </a>
+            <a class="nav-link" id="marca-tab" type="submit"  href="<%=context%>/ServletMarcasTable"
+                >  Marcas  </a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
-               aria-controls="categoria"
-               aria-selected="false">Categorias</a>
+            <a class="nav-link" id="categoria-tab" type="submit" href="<%=context%>/ServletConsultarCategoria">Categorias</a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="paquete-tab" data-toggle="tab" href="#paquete" role="tab" aria-controls="paquete"
@@ -83,30 +81,56 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="producto" role="tabpanel" aria-labelledby="home-tab">
             <div class="card">
+                <div class="row">
+                    <div class="card-header col-6">
+                        Productos Registrados
+                    </div>
+                    <div class="card-header col-6 text-right">
+                        <a href="<%=context%>/ServletAgregarCategoria"
+                           class="btn btn-success my-2 my-sm-0 size-font-button" style="margin: right 3rem;"
+                           type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
+                    </div></div>
                 <div class="card-body">
 
                     <br>
-                    <table class="table">
-                        <thead class="btn-danger">
-                        <tr>
+                    <table class="table table-hover">
+                        <!-- Define el color de fondo en la cabecera de la tabla -->
+                        <thead  style="background: #ed7074">
 
-                            <th style="text-align: center" scope="col">Producto </th>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Producto </th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Existencia</th>
+                            <th scope="col">Fecha de caducidad</th>
+                        </tr>
+                        </thead>
 
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="align-content-center">
-                            <th style="text-align: center">
-                                <a href="<%=context%>/ServletAgregarCategoria"
-                                   class="btn btn-success my-2 my-sm-0" style="margin: right 3rem;"
-                                   type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
+                        <c:forEach items="${listCategorias}" var="categorias" varStatus="status">
+                            <tr>
+                                <td>${status.count}</td>
 
-                                <a href="<%=context%>/ServletConsultarCategoria"
-                                   class="btn btn-primary my-2 my-sm-0" style="margin: right 3rem;"
-                                   type="submit"> Consultar <i class="fas fa-search"></i> </a>
-                            </th>
+                                <td>${categorias.nombreCategoria}</td>
 
-                        </tr>
+
+                                <td class="text-center">
+                                    <form method="get" action="<%=context%>/ServletUpdateCategorias">
+                                        <input type="hidden" name="id" value="${categorias.id}">
+                                        <button title="Modificar" class="btn btn-outline-warning"><i class="fas fa-edit"></i></button>
+                                    </form>
+                                </td>
+
+                                <td class="text-center">
+                                    <form method="post" action="<%=context%>/ServletDeleteCategoria">
+                                        <input type="hidden" name="id" value="${categorias.id}">
+                                        <button title="Eliminar" class="btn btn-outline-danger"><i class="fas fa-times"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                     <!-- Button trigger modal -->
@@ -116,116 +140,7 @@
 
             </div>
         </div>
-        <div class="tab-pane fade" id="marca" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="card">
-                <div class="card-body">
 
-                    <br>
-                    <table class="table table-hover">
-                        <thead class="btn-danger">
-                        <tr>
-
-                            <th style="text-align: center" scope="col">Marca </th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="align-content-center">
-                                <th style="text-align: center">
-                                    <a href="<%=context%>/ServletAgregarMarcas"
-                                       class="btn btn-success my-2 my-sm-0" style="margin: right 3rem;"
-                                       type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
-
-                                    <a href="<%=context%>/ServletMarcasTable"
-                                       class="btn btn-primary my-2 my-sm-0" style="margin: right 3rem;"
-                                       type="submit"> Consultar <i class="fas fa-search"></i> </a>
-                                </th>
-
-
-                            </tr>
-                        </tbody>
-
-                    </table>
-
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="categoria" role="tabpanel" aria-labelledby="contact-tab">
-            <div class="card">
-                <div class="card-body">
-
-                    <br>
-                    <table class="table">
-                        <thead class="btn-danger">
-                        <tr>
-                            <th style="text-align: center" scope="col">Categoria</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="align-content-center">
-                            <th style="text-align: center">
-                                <a href="<%=context%>/ServletAgregarCategoria"
-                                   class="btn btn-success my-2 my-sm-0" style="margin: right 3rem;"
-                                   type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
-
-                                <a href="<%=context%>/ServletConsultarCategoria"
-                                   class="btn btn-primary my-2 my-sm-0" style="margin: right 3rem;"
-                                   type="submit"> Consultar <i class="fas fa-search"></i> </a>
-                            </th>
-
-                        </tr>
-                        </tbody>
-                    </table>
-
-
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="paquete" role="tabpanel" aria-labelledby="contact-tab">
-            <div class="card">
-                <div class="card-body">
-                    <h2>Consultar Paquetes</h2>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Candy" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
-                    <br>
-                    <table class="table">
-                        <thead class="btn-danger">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Paquete
-                                <button class="btn btn-success my-2 my-sm-0" style="margin: right 3rem;" type="submit">
-                                    Agregar
-                                </button>
-                            </th>
-                            <th scope="col">Contenido</th>
-                            <th scope="col">Existencia</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Bombones</td>
-                            <td class="align-middle">
-                                <button type="button" class="btn btn-outline-success" data-toggle="modal"
-                                        data-target="#paqueteModal">
-                                    Productos
-                                </button>
-                            </td>
-
-                            <td>50</td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-
-
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 <!-- Modal -->
@@ -254,132 +169,7 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
-<div class="modal " id="marcaModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="">
-        <div class="container">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tittle2">Productos asociados</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table class="table">
-                        <thead class="bg-danger">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Producto</th>
-                            <th scope="col">Nombre</th>
 
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="align-middle">
-                            <th class="align-middle" scope="row">1</th>
-                            <td class="align-middle">
-                                <img style="width: 150px;" src="<%=context%>/assets/bomb.jpg" alt="">
-                            </td>
-                            <td class="align-middle">Bombones</td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal " id="categoriaModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="container">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="tittle3">Productos asociados</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <table class="table">
-                    <thead class="bg-danger">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Nombre</th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="align-middle">
-                        <th class="align-middle" scope="row">1</th>
-                        <td class="align-middle">
-                            <img style="width: 150px;" src="<%=context%>/assets/bomb.jpg" alt="">
-                        </td>
-                        <td class="align-middle">Bombones</td>
-
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal " id="paqueteModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="container">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="tittle4">Contenido</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <table class="table">
-                    <thead class="bg-danger">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">fecha de caducidad</th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="align-middle">
-                        <th class="align-middle" scope="row">1</th>
-                        <td class="align-middle">
-                            <img style="width: 150px;" src="<%=context%>/assets/bomb.jpg" alt="">
-                        </td>
-                        <td class="align-middle">Bombones</td>
-                        <td class="align-middle">07/10/2021</td>
-
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-warning">Modificar</button>
-                <button type="button" class="btn btn-danger">Eliminar</button>
-
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

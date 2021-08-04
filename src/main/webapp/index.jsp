@@ -33,7 +33,7 @@
 <br>
 
 <div class="text-center ">
-    <h1 class="textTitle">Bienvenido a la
+    <h1 class="textTitle">¡Bienvenido! a la
         <br> "Dulcería La calaverita de azúcar"
 
     </h1>

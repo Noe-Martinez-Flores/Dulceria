@@ -11,7 +11,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,41 +106,35 @@
                     <img class="rounded float-end" src="../assets/perfil2.png" style="height: 168px; width: 169px;">
                 </figure>
                 <div class="text-success form-floating" style=" position:relative;">
-                    <form id="form" method="POST">
-                        <label for="name">Nombre(s):</label>
-                        <input style="width: 500px ; height: 35px;" type="text" name="nombre" id="name"
+                    <form action="<%=context%>/ServletCreatePersonal" id="form" method="post">
+                        <label for="name">Nombre Completo:</label>
+                        <input style="width: 500px ; height: 35px;" type="text" name="name" id="name"
                                class="form-control text-center" placeholder="example:Obed">
 
                         <br>
-                        <label for="lastname">Apellidos:</label>
-                        <input style="width: 500px ; height: 35px;" type="text" name="apellido" id="lastname"
-                               class="form-control text-center" placeholder="example:Hurtado">
+
                         <br>
-                        <label for="lastname">Nombre de usuario:</label>
-                        <input style="width: 500px ; height: 35px;" type="text" name="apellido" id="lastname"
+                        <label for="username">Nombre de usuario:</label>
+                        <input style="width: 500px ; height: 35px;" type="text" name="username" id="username"
                                class="form-control text-center" placeholder="example:Obed_Felz12" minlength="4" maxlength="8">
                         <br>
 
                         <label for="email" class="form-label">Correo Electrónico:</label>
-                        <input style="width: 500px ; height: 35px;" type="email" class="form-control text-center" id="email"
+                        <input style="width: 500px ; height: 35px;" type="email" class="form-control text-center" name="email" id="email"
                                aria-describedby="emailHelp" placeholder="example@gmail.com">
                         <br>
 
                         <label for="pass" class="form-label">Contraseña:</label>
-                        <input style="width: 500px ; height: 35px;" type="password" class="form-control text-center" id="pass">
+                        <input style="width: 500px ; height: 35px;" type="password" class="form-control text-center" name="pass" id="pass">
                         <br>
 
-                        <label for="pass" class="form-label">Confirmar contraseña:</label>
-                        <input style="width: 500px ; height: 35px;" type="password" class="form-control text-center" id="pass">
-                        <br>
 
-                        <label for="phone" class="form-label">Número de teléfono:</label><br>
-                        <input style="width: 150px ; height: 35px;" type="text" class=" text-center" id="edad"
+
+                        <label for="number" class="form-label">Número de teléfono:</label><br>
+                        <input style="width: 150px ; height: 35px;" type="tel" class=" text-center" name="number" id="number"
                                placeholder="000-000-000">
                         <br><br>
 
-                        <label for="cajero">Tipo de empleado:</label><br>
-                        <input class="text-center" type="text" name="typeemp" value="Cajero" readonly>
 
                         <br><br>
                         <button type="submit" class="btn btn-primary text-center">Registrar</button>

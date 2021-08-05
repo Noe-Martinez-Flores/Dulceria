@@ -5,7 +5,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +34,6 @@
 <div class="text-center ">
     <h1 class="textTitle">¡Bienvenido! a la
         <br> "Dulcería La calaverita de azúcar"
-
     </h1>
 </div>
 <div class="container-fluid">
@@ -71,10 +69,7 @@
                                 <div class="text-center">
                                     <a  type="button" class="btn btn-primary" href="<%=context%>/ServletInicioAdmin"><h4>Iniciar Sesion</h4> </a>
                                 </div>
-
                             </form>
-
-
                         </div>
                     </div>
                 </div>
@@ -82,7 +77,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script src="https://unpkg.com/feather-icons"></script>

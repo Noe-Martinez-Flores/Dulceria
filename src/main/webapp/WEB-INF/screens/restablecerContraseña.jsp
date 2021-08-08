@@ -63,24 +63,14 @@
                                 </div>
 
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" for="nombreRecup">Nombre completo :</label>
-                                <div class="col-sm-9"><input type="text" class="form-control" id="nombreRecup" placeholder="UserUTEZ">
-                                </div>
 
-                            </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="mailRecup">Correo electronico:</label>
                                 <div class="col-sm-9"><input type="email" class="form-control" id="mailRecup" placeholder="UserUTEZ@ejemplo.com">
                                 </div>
 
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" for="TelRecup">Celular :</label>
-                                <div class="col-sm-9"><input type="tel" class="form-control" id="TelRecup" placeholder="UserUTEZ">
-                                </div>
 
-                            </div>
                             <div class="text-center">
                                 <a href="<%=context%>/ServletVerificarContraseña" type="submit"  onclick="recuperarContraseña()" class="btn btn-primary" ><h4>Recuperar</h4> </a>
                             </div>

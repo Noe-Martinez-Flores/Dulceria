@@ -14,8 +14,8 @@ import java.io.IOException;
 public class ServletAgregarCategoria extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        request.getRequestDispatcher("/WEB-INF/screens/categoria/agregarCategoria.jsp").forward(request,response);
+        request.setAttribute("listCategorias", new DaoCategoria().findAll());
+        request.getRequestDispatcher("/WEB-INF/screens/adminInicioCategoria.jsp").forward(request,response);
     }
 
     @Override

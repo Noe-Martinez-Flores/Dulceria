@@ -21,7 +21,7 @@
     @import url('http://fonts.cdnfonts.com/css/chicken-soup?styles=65478');
 </style>
 <header>
-    <div class="fixed-top">
+    <div class="fixed-top sticky-top">
         <div class="collapse" id="navbarToggleExternalContent">
 
             <div class="bg-danger p-4">

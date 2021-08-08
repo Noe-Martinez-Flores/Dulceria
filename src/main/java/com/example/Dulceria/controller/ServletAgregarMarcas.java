@@ -14,7 +14,7 @@ public class ServletAgregarMarcas extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setAttribute("listMarcas", new DaoMarcas().findAll());
-        request.getRequestDispatcher("/WEB-INF/screens/agregarMarcas.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/screens/adminInicioMarcas.jsp").forward(request,response);
     }
 
     @Override

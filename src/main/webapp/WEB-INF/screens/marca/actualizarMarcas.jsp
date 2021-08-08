@@ -23,7 +23,7 @@
 </head>
 <body>
 <header>
-    <div class="fixed-top">
+    <div class="fixed-top sticky-top">
         <div class="collapse" id="navbarToggleExternalContent">
 
             <div class="bg-danger p-4">

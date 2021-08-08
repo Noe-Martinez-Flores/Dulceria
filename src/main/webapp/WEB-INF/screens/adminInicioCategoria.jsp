@@ -8,6 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String context = request.getContextPath(); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${sessionScope.user == null}">
+    <c:redirect url="/index.jsp"/>
+</c:if>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,14 +32,14 @@
     @import url('http://fonts.cdnfonts.com/css/chicken-soup?styles=65478');
 </style>
 <header>
-    <div class="fixed-top">
+    <div class="fixed-top sticky-top">
         <div class="collapse" id="navbarToggleExternalContent">
 
             <div class="bg-danger p-4">
                 <h5 class="text-white h3">Administrador</h5>
                 <hr class="">
-                <a class="nav-link active text-white" href="">Principal<span class="sr-only">(current)</span></a>
-                <a class="nav-link text-white" href="<%=context%>/ServletCajeroInicio">Gestion Empleados</a>
+                <a class="nav-link active text-white" href="<%=context%>/ServletInicioAdmin">Principal<span class="sr-only">(current)</span></a>
+                <a class="nav-link text-white" href="<%=context%>/ServletGestionEmpleados">Gestion Empleados</a>
                 <a class="nav-link text-white" href="#">Perfil</a>
                 <a class="nav-link text-white text-right" href="<%=context%>/ServletBackToIndex" tabindex="-1"
                    aria-disabled="true"><i data-feather="power"></i> Cerrar Sesion </a>
@@ -61,9 +64,7 @@
 
     <h1>Bienvenido <span></span></h1>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="producto-tab" type="submit" href="<%=context%>/ServletInicioAdmin"> Productos </a>
-        </li>
+
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="marca-tab" type="submit" href="<%=context%>/ServletMarcasTable"
             > Marcas </a>
@@ -73,10 +74,7 @@
                aria-controls="categoria"
                aria-selected="false">Categorias</a>
         </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="paquete-tab" data-toggle="tab" href="#paquete" role="tab" aria-controls="paquete"
-               aria-selected="false">Paquetes</a>
-        </li>
+
     </ul>
     <div class="tab-content" id="myTabContent">
 
@@ -87,9 +85,9 @@
                         Categorias Registradas
                     </div>
                     <div class="card-header col-6 text-right">
-                        <a href="<%=context%>/ServletAgregarCategoria"
+                        <button data-toggle="modal" data-target="#categoriaModalAgregar"
                            class="btn btn-success my-2 my-sm-0 size-font-button" style="margin: right 3rem;"
-                           type="submit"> Agregar <i class="fas fa-plus"></i> </a>
+                           type="submit"> Agregar <i class="fas fa-plus"></i> </button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -118,8 +116,8 @@
                                 <td class="text-center">
                                     <form method="get" action="<%=context%>/ServletUpdateCategorias">
                                         <input type="hidden" name="id" value="${categorias.id}">
-                                        <button title="Modificar" style=" height:100%; width: 43%; "
-                                        " class="btn btn-outline-warning size-font-button"><i
+                                        <button title="Modificar" style=" height:100%; width: 43%;"
+                                        class="btn btn-warning size-font-button"><i
                                             class="fas fa-edit"></i></button>
                                     </form>
                                 </td>
@@ -128,7 +126,7 @@
                                     <form method="post" action="<%=context%>/ServletDeleteCategoria">
                                         <input type="hidden" name="id" value="${categorias.id}">
                                         <button title="Eliminar" style=" height:100%; width: 50%; "
-                                                class="btn btn-outline-danger size-font-button"><i
+                                                class="btn btn-danger size-font-button"><i
                                                 class="fas fa-times"></i></button>
                                     </form>
                                 </td>
@@ -188,154 +186,56 @@
         </div>
     </div>
 </section>
-<!-- Modal -->
-<div class="modal fade" id="productoModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="tittle1">Detalles</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <label class="text-center" value="">Nombre</label>
-                <br>
-                <img style="width: 150px;" src="<%=context%>/assets/bomb.jpg" alt="">
 
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-warning">Modificar</button>
-                <button type="button" class="btn btn-danger">Eliminar</button>
-
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal " id="marcaModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="">
-        <div class="container">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tittle2">Productos asociados</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table class="table">
-                        <thead class="bg-danger">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Producto</th>
-                            <th scope="col">Nombre</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="align-middle">
-                            <th class="align-middle" scope="row">1</th>
-                            <td class="align-middle">
-                                <img style="width: 150px;" src="<%=context%>/assets/bomb.jpg" alt="">
-                            </td>
-                            <td class="align-middle">Bombones</td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal " id="categoriaModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal border-top-2" id="categoriaModalAgregar" data-backdrop="static" data-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="container">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="tittle3">Productos asociados</h5>
+            <div class="modal-header bg-danger">
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table">
-                    <thead class="bg-danger">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Nombre</th>
+                <form action="<%=context%>/ServletAgregarCategoria" method="post">
+                    <div class="row">
+                        <div class="col text-center">
+                            <label class="" for="" > Nueva Categoria </label>
+                            <input type="text" id="Nombre_de_la_categoria" name="Nombre_de_la_categoria" class="form-control" placeholder="Nombre de la Categoria">
+                        </div>
 
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="align-middle">
-                        <th class="align-middle" scope="row">1</th>
-                        <td class="align-middle">
-                            <img style="width: 150px;" src="<%=context%>/assets/bomb.jpg" alt="">
-                        </td>
-                        <td class="align-middle">Bombones</td>
 
-                    </tr>
-                    </tbody>
-                </table>
+                    </div>
+
+                    <div style="text-align: center" class="col-12 pt-2">
+                        <button  type="submit" class="btn btn-primary size-font-button"> ¡Agregar! </button>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">cerrar</button>
+
             </div>
         </div>
     </div>
 </div>
-<!-- Modal -->
-<div class="modal " id="paqueteModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal " id="categoriaModalModificar" data-backdrop="static" data-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="container">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tittle4">Contenido</h5>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body text-center">
-                <table class="table">
-                    <thead class="bg-danger">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">fecha de caducidad</th>
+            <div class="modal-body">
 
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="align-middle">
-                        <th class="align-middle" scope="row">1</th>
-                        <td class="align-middle">
-                            <img style="width: 150px;" src="<%=context%>/assets/bomb.jpg" alt="">
-                        </td>
-                        <td class="align-middle">Bombones</td>
-                        <td class="align-middle">07/10/2021</td>
-
-                    </tr>
-                    </tbody>
-                </table>
             </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-warning">Modificar</button>
-                <button type="button" class="btn btn-danger">Eliminar</button>
-
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
             </div>
         </div>
     </div>

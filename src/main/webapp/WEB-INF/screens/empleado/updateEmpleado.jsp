@@ -1,5 +1,7 @@
 <%-- Created by IntelliJ IDEA. User: noemt Date: 26/07/2021 Time: 08:01 p. m. To change this template use File |
     Settings | File Templates. --%>
+
+<%@ page import="com.example.Dulceria.model.personal.Personal" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String context=request.getContextPath(); %>
 <!DOCTYPE html>
@@ -84,7 +86,7 @@
                              style="height: 168px; width: 169px;">
                     </figure>
                     <div class="text-success form-floating" style=" position:relative;">
-
+                        <% Personal personal = (Personal) request.getAttribute("updatePersonal");%>
                         <form action="<%=context%>/ServletCreatePersonal" id="form" method="post">
 
                             <div class="row text-center ">
@@ -92,7 +94,7 @@
                                     <label for="name">Nombre Completo:</label>
                                     <input style="width: 500px ; height: 35px;" type="text" name="name"
                                            id="name" class="form-control text-center"
-                                           placeholder="example:Obed">
+                                           placeholder="example:Obed" value="<%=personal.getNombreCompleto()%>">
                                 </div>
 
                                 <br>
@@ -101,7 +103,7 @@
                                     <label for="username">Nombre de usuario:</label>
                                     <input style="width: 500px ; height: 35px;" type="text"
                                            name="username" id="username" class="form-control text-center"
-                                           placeholder="example:Obed_Felz12" minlength="4" maxlength="8">
+                                           placeholder="example:Obed_Felz12" minlength="4" maxlength="8" value="<%=personal.getNombreUsuario()%>">
                                 </div>
 
                                 <br>
@@ -110,7 +112,7 @@
                                     <label for="email" class="form-label">Correo Electrónico:</label>
                                     <input style="width: 500px ; height: 35px;" type="email"
                                            class="form-control text-center" name="email" id="email"
-                                           aria-describedby="emailHelp" placeholder="example@gmail.com">
+                                           aria-describedby="emailHelp" placeholder="example@gmail.com" value="<%=personal.getEmail()%>">
                                 </div>
                             </div>
 
@@ -120,17 +122,13 @@
                                 <div class="col-12 col-sm-4" >
                                     <label for="pass" class="form-label">Contraseña:</label>
                                     <input style="width: 500px ; height: 35px;" type="password"
-                                           class="form-control text-center" name="pass" id="pass">
+                                           class="form-control text-center" name="pass" id="pass" value="<%=personal.getPassword()%>">
                                 </div>
 
 
                                 <br>
 
-                                <div class="col-12 col-sm-4">
-                                    <label for="pass" class="form-label">Confirmar Contraseña:</label>
-                                    <input style="width: 500px ; height: 35px;" type="password"
-                                           class="form-control text-center" name="pass" id="pass">
-                                </div>
+
 
 
                                 <br>
@@ -141,14 +139,16 @@
                                         teléfono:</label><br>
                                     <input style="width: 500px ; height: 35px;" type="tel"
                                            class="form-control text-center" name="number" id="number"
-                                           placeholder="000-000-000">
+                                           placeholder="000-000-000" value="<%=personal.getPhoneNumber()%>">
+                                    <input type="hidden" name="id" value="<%=personal.getId()%>">
                                 </div>
+
 
                             </div>
 
                             <br>
                             <br>
-                            <button type="submit" class="btn btn-primary text-center">Registrar</button>
+                            <button type="submit" class="btn btn-warning text-center"> Modificar </button>
                             <br>
                         </form>
                     </div>

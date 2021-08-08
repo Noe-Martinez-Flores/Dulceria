@@ -47,28 +47,29 @@
                     <div class="card-body">
 
                         <div>
-                            <form class="px-4 py-3" method="post">
+                            <form action="<%=context%>/ServletLogin" class="px-4 py-3" method="post">
 
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="UsuarioLogin">Usuario :</label>
-                                    <div class="col-sm-9"><input type="text" class="form-control" id="UsuarioLogin" placeholder="UserUTEZ">
+                                    <div class="col-sm-9"><input type="text" class="form-control" name="usuarioLogin" id="usuarioLogin" placeholder="UserUTEZ">
                                     </div>
 
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" for="PassLogin">Contraseña : </label>
-                                    <div class="col-sm-9"><input type="password" class="form-control" id="PassLogin" placeholder="******">
+                                    <div class="col-sm-9"><input type="password" class="form-control" name="passLogin" id="passLogin" placeholder="******">
                                     </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary" ><h4>Iniciar Sesión</h4> </button>
                                 </div>
                                 <div class="form-group text-center ">
                                     <div class="form-check">
                                         <a class="nav-link" href="<%=context%>/ServletRecPassword">Olvidaste la contraseña</a>
                                     </div>
                                 </div>
-                                <div class="text-center">
-                                    <a  type="button" class="btn btn-primary" href="<%=context%>/ServletInicioAdmin"><h4>Iniciar Sesion</h4> </a>
-                                </div>
+
                             </form>
                         </div>
                     </div>

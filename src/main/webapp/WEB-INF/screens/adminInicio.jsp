@@ -8,6 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String context = request.getContextPath(); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${sessionScope.user == null}">
+    <c:redirect url="/index.jsp"/>
+</c:if>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +32,7 @@
     @import url('http://fonts.cdnfonts.com/css/chicken-soup?styles=65478');
 </style>
 <header>
-    <div class="fixed-top">
+    <div class="fixed-top sticky-top">
         <div class="collapse" id="navbarToggleExternalContent">
 
             <div class="bg-danger p-4">
@@ -37,7 +40,7 @@
                 <hr class="">
                 <a class="nav-link active text-white" href="">Principal<span class="sr-only">(current)</span></a>
                 <a class="nav-link text-white" href="<%=context%>/ServletGestionEmpleados">Gestion Empleados</a>
-                <a class="nav-link text-white" href="#">Perfil</a>
+                <a class="nav-link text-white" href="<%=context%>/ServletMarcasTable">Marcas y Categorias</a>
                 <a class="nav-link text-white text-right" href="<%=context%>/ServletBackToIndex" tabindex="-1"
                    aria-disabled="true"><i data-feather="power"></i> Cerrar Sesion </a>
             </div>
@@ -67,15 +70,7 @@
                aria-selected="true">Productos</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="marca-tab" type="submit"  href="<%=context%>/ServletMarcasTable"
-                >  Marcas  </a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="categoria-tab" type="submit" href="<%=context%>/ServletConsultarCategoria">Categorias</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="paquete-tab" data-toggle="tab" href="#paquete" role="tab" aria-controls="paquete"
-               aria-selected="false">Paquetes</a>
+            <a class="nav-link" id="paquetes-tab" type="submit" href="<%=context%>/ServletToPaquetes">Paquetes</a>
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">

@@ -1,4 +1,4 @@
-package com.example.Dulceria.controller;
+package com.example.Dulceria.controller.producto;
 
 import com.example.Dulceria.model.marca.DaoMarcas;
 
@@ -12,7 +12,7 @@ public class ServletAgregarProducto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("/WEB-INF/screens/agregar.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/screens/producto/registrarProducto.jsp").forward(request,response);
     }
 
     @Override

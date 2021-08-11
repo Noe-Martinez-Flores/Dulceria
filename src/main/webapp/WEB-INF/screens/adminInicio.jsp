@@ -21,6 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<%=context%>/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=context%>/css/style.css">
+    <link rel="shortcut icon" href="<%=context%>/assets/calAzuc.png" type="image/x-icon">
     <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="http://fonts.cdnfonts.com/css/chicken-soup" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
@@ -81,7 +82,7 @@
                         Productos Registrados
                     </div>
                     <div class="card-header col-6 text-right">
-                        <a href="<%=context%>/ServletAgregarCategoria"
+                        <a href="<%=context%>/ServletAgregarProducto"
                            class="btn btn-success my-2 my-sm-0 size-font-button" style="margin: right 3rem;"
                            type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
                     </div></div>

@@ -90,7 +90,6 @@ public class DaoPersonal {
                 personal.setPassword(rs.getString("Contraseña"));
                 personal.setEmail(rs.getString("Correo_Electronico"));
                 personal.setPhoneNumber(rs.getString("Numero_de_telefono"));
-
             }
         }catch (SQLException ex){
             ex.printStackTrace();

@@ -6,8 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% String context = request.getContextPath();
-%>
+<% String context = request.getContextPath();%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<%=context%>/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=context%>/css/style.css">
+    <link rel="shortcut icon" href="<%=context%>/assets/calAzuc.png" type="image/x-icon">
     <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="http://fonts.cdnfonts.com/css/chicken-soup" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
@@ -25,7 +25,6 @@
 <header>
     <div class="fixed-top sticky-top">
         <div class="collapse" id="navbarToggleExternalContent">
-
             <div class="bg-danger p-4">
                 <h5 class="text-white h3">Administrador</h5>
                 <hr class="">
@@ -58,15 +57,12 @@
                 <input type="hidden" name="id" value="<%=marca.getId()%>">
                 <input type="text" id="Marca_del_producto" name="Marca_del_producto" class="form-control" value="<%=marca.getMarcaProducto()%>" placeholder="Nombre de la Marca">
             </div>
-
             <div style="text-align: center" class="col-12 pt-2">
                 <button type="submit" class="btn btn-primary size-font-button"> ¡Modificar! </button>
             </div>
-
         </div>
     </form>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">

@@ -1,7 +1,13 @@
-<%-- Created by IntelliJ IDEA. User: noemt Date: 26/07/2021 Time: 08:01 p. m. To change this template use File |
-    Settings | File Templates. --%>
+<%--
+  Created by IntelliJ IDEA.
+  User: noemt
+  Date: 08/08/2021
+  Time: 08:28 p. m.
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% String context=request.getContextPath(); %>
+<% String context = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +18,10 @@
     <link rel="stylesheet" href="<%=context%>/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=context%>/css/style.css">
     <link rel="shortcut icon" href="<%=context%>/assets/calAzuc.png" type="image/x-icon">
-    <link rel="stylesheet"
-          href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="http://fonts.cdnfonts.com/css/chicken-soup" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
-    <title>Empleados</title>
+    <title>Registrar Producto</title>
 </head>
 
 <body>
@@ -34,7 +39,7 @@
                    href="<%=context%>/ServletInicioAdmin">Principal<span
                         class="sr-only">(current)</span></a>
                 <a class="nav-link text-white" href="<%=context%>/ServletConsultaPersonal">Consultar
-                    Empleados</a>
+                    Productos</a>
                 <a class="nav-link text-white" href="#">Perfil</a>
                 <a class="nav-link text-white text-right" href="" tabindex="-1" aria-disabled="true"><i
                         data-feather="power"></i> Cerrar Sesion </a>
@@ -57,8 +62,8 @@
 
 <section style="margin-top: 4rem;" class="container-fluid  ">
 
-    <h1>Bienvenido <span></span></h1>
-    <a class="btn-outline-success" href="<%=context%>/ServletConsultaPersonal"> consultar empleados </a>
+
+    <a class="btn-outline-success" href="<%=context%>/ServletConsultaPersonal"> consultar productos </a>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="producto" role="tabpanel" aria-labelledby="home-tab">
             <div class="card">
@@ -73,44 +78,44 @@
         <div class="container-fluid">
             <div class="">
                 <div class="card-header text-center ">
-                    <small class="text-success">
-                        <h1 class="display-6">Registro de Empleados</h1>
+                    <small class="">
+                        <h1 class="display-6">Registro de Productos</h1>
                     </small>
                 </div>
+                <br>
                 <div class=" text-center " style="margin:0 auto;">
                     <figure >
                         <img class="rounded float-end "
-                             src="https://image.flaticon.com/icons/png/512/848/848006.png"
+                             src="https://image.flaticon.com/icons/png/512/1074/1074562.png"
                              style="height: 168px; width: 169px;">
                     </figure>
-                    <div class="text-success form-floating" style=" position:relative;">
+                    <div class=" form-floating" style=" position:relative; color: #2C0348;">
 
                         <form action="<%=context%>/ServletCreatePersonal" id="form" method="post">
 
                             <div class="row text-center ">
                                 <div class="col-12 col-sm-4">
-                                    <label for="name">Nombre Completo:</label>
-                                    <input style="width: 100% ; height: 35px;" type="text" name="name"
-                                           id="name" class="form-control text-center"
-                                           placeholder="example:Obed">
+                                    <label for="nameProducto">Nombre del Producto:</label>
+                                    <input style="width: 100% ; height: 35px;" type="text" name="nameProducto"
+                                           id="nameProducto" class="form-control text-center">
                                 </div>
 
                                 <br>
 
                                 <div class="col-12 col-sm-4">
-                                    <label for="username">Nombre de usuario:</label>
+                                    <label for="cantidadUnidades">Cantidad de Unidades:</label>
+                                    <input style="width: 100% ; height: 35px;" type="number"
+                                           name="cantidadUnidades" id="cantidadUnidades" class="form-control text-center"
+                                            minlength="4" maxlength="8">
+                                </div>
+
+                                <br>
+
+                                <div class="col-12 col-sm-4">
+                                    <label for="marca" class="form-label">Marca:</label>
                                     <input style="width: 100% ; height: 35px;" type="text"
-                                           name="username" id="username" class="form-control text-center"
-                                           placeholder="example:Obed_Felz12" minlength="4" maxlength="8">
-                                </div>
-
-                                <br>
-
-                                <div class="col-12 col-sm-4">
-                                    <label for="email" class="form-label">Correo Electrónico:</label>
-                                    <input style="width: 100% ; height: 35px;" type="email"
-                                           class="form-control text-center" name="email" id="email"
-                                           aria-describedby="emailHelp" placeholder="example@gmail.com">
+                                           class="form-control text-center" name="marca" id="marca"
+                                           aria-describedby="emailHelp">
                                 </div>
                             </div>
 
@@ -118,18 +123,18 @@
                                 <br>
 
                                 <div class="col-12 col-sm-4" >
-                                    <label for="pass" class="form-label">Contraseña:</label>
-                                    <input style="width: 100% ; height: 35px;" type="password"
-                                           class="form-control text-center" name="pass" id="pass">
+                                    <label for="categoria" class="form-label">Categoría:</label>
+                                    <input style="width: 100% ; height: 35px;" type="text"
+                                           class="form-control text-center" name="categoria" id="categoria">
                                 </div>
 
 
                                 <br>
 
                                 <div class="col-12 col-sm-4">
-                                    <label for="pass" class="form-label">Confirmar Contraseña:</label>
-                                    <input style="width: 100% ; height: 35px;" type="password"
-                                           class="form-control text-center" name="pass" id="pass">
+                                    <label for="precioMenudeo" class="form-label">Precio de Menudeo:</label>
+                                    <input style="width: 100% ; height: 35px;" type="number"
+                                           class="form-control text-center" name="precioMenudeo" id="precioMenudeo">
                                 </div>
 
 
@@ -137,18 +142,44 @@
 
 
                                 <div class="col-12 col-sm-4 ">
-                                    <label for="number" class="form-label">Número de
-                                        teléfono:</label><br>
-                                    <input style="width: 100% ; height: 35px;" type="tel"
-                                           class="form-control text-center" name="number" id="number"
-                                           placeholder="000-000-000">
+                                    <label for="precioMayoreo" class="form-label">Precio de Mayoreo:</label><br>
+                                    <input style="width: 100% ; height: 35px;" type="number"
+                                           class="form-control text-center" name="precioMayoreo" id="precioMayoreo">
                                 </div>
 
+
+                                <br>
+
+
+                                <div class="col-12 col-sm-4 ">
+                                    <label for="fechaCaducidad" class="form-label">Fecha de Caducidad:</label><br>
+                                    <input style="width: 100% ; height: 35px;" type="date"
+                                           class="form-control text-center" name="fechaCaducidad" id="fechaCaducidad"
+                                           placeholder="**-**-****">
+                                </div>
+
+
+                                <br>
+
+                                <div class="col-12 col-sm-4 ">
+                                    <br>
+
+                                    <button type="submit" class="btn btn-primary text-center size-font-button">Registrar Producto</button>
+                                </div>
+
+
+                                <br>
+
+
+                                <div class="col-12 col-sm-4 ">
+                                    <label for="numeroLote" class="form-label">Número de Lote:</label><br>
+                                    <input style="width: 100% ; height: 35px;" type="number"
+                                           class="form-control text-center" name="numeroLote" id="numeroLote">
+                                </div>
                             </div>
 
                             <br>
-                            <br>
-                            <button type="submit" class="btn btn-primary text-center">Registrar</button>
+
                             <br>
                         </form>
                     </div>
@@ -178,3 +209,4 @@
 </body>
 
 </html>
+

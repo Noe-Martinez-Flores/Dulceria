@@ -38,9 +38,9 @@ public class ServletUpdatePersonal extends HttpServlet {
         personal.setPhoneNumber(request.getParameter("number"));
 
         if (daoPersonal.updatePersonal(personal)){
-            request.setAttribute("message", "Persona Actualizada");
+            request.setAttribute("message", "succesUpdate");
         } else {
-            request.setAttribute("message", "Error al actualizar la persona");
+            request.setAttribute("message", "errorUpdate");
         }
         doGet(request, response);
     }

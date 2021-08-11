@@ -3,6 +3,7 @@
 
 <%@ page import="com.example.Dulceria.model.personal.Personal" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% String context=request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +49,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <a class="navbar-brand" href="#">
                 <img src="<%=context%>/assets/calAzuc.png" width="30" height="30"
                      class="d-inline-block align-top" alt="">
@@ -59,12 +61,11 @@
 
 <section style="margin-top: 4rem;" class="container-fluid  ">
 
-    <h1>Bienvenido <span></span></h1>
-    <a class="btn-outline-success" href="<%=context%>/ServletConsultaPersonal"> consultar empleados </a>
+
+    <a class="btn-outline-success" href="<%=context%>/ServletConsultaPersonal"> Consultar Empleados </a>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="producto" role="tabpanel" aria-labelledby="home-tab">
             <div class="card">
-
             </div>
         </div>
     </div>
@@ -87,12 +88,13 @@
                     </figure>
                     <div class="text-success form-floating" style=" position:relative;">
                         <% Personal personal = (Personal) request.getAttribute("updatePersonal");%>
-                        <form action="<%=context%>/ServletCreatePersonal" id="form" method="post">
+
+                        <form action="<%=context%>/ServletUpdatePersonal" id="form" method="post">
 
                             <div class="row text-center ">
                                 <div class="col-12 col-sm-4">
                                     <label for="name">Nombre Completo:</label>
-                                    <input style="width: 500px ; height: 35px;" type="text" name="name"
+                                    <input style="width: 100% ; height: 35px;" type="text" name="name"
                                            id="name" class="form-control text-center"
                                            placeholder="example:Obed" value="<%=personal.getNombreCompleto()%>">
                                 </div>
@@ -101,7 +103,7 @@
 
                                 <div class="col-12 col-sm-4">
                                     <label for="username">Nombre de usuario:</label>
-                                    <input style="width: 500px ; height: 35px;" type="text"
+                                    <input style="width: 100% ; height: 35px;" type="text"
                                            name="username" id="username" class="form-control text-center"
                                            placeholder="example:Obed_Felz12" minlength="4" maxlength="8" value="<%=personal.getNombreUsuario()%>">
                                 </div>
@@ -110,7 +112,7 @@
 
                                 <div class="col-12 col-sm-4">
                                     <label for="email" class="form-label">Correo Electrónico:</label>
-                                    <input style="width: 500px ; height: 35px;" type="email"
+                                    <input style="width: 100% ; height: 35px;" type="email"
                                            class="form-control text-center" name="email" id="email"
                                            aria-describedby="emailHelp" placeholder="example@gmail.com" value="<%=personal.getEmail()%>">
                                 </div>
@@ -121,15 +123,16 @@
 
                                 <div class="col-12 col-sm-4" >
                                     <label for="pass" class="form-label">Contraseña:</label>
-                                    <input style="width: 500px ; height: 35px;" type="password"
+                                    <input style="width: 100% ; height: 35px;" type="password"
                                            class="form-control text-center" name="pass" id="pass" value="<%=personal.getPassword()%>">
                                 </div>
 
 
                                 <br>
 
+                                <div class="col-12 col-sm-4" >
 
-
+                                </div>
 
                                 <br>
 
@@ -137,7 +140,7 @@
                                 <div class="col-12 col-sm-4 ">
                                     <label for="number" class="form-label">Número de
                                         teléfono:</label><br>
-                                    <input style="width: 500px ; height: 35px;" type="tel"
+                                    <input style="width: 100% ; height: 35px;" type="tel"
                                            class="form-control text-center" name="number" id="number"
                                            placeholder="000-000-000" value="<%=personal.getPhoneNumber()%>">
                                     <input type="hidden" name="id" value="<%=personal.getId()%>">
@@ -148,9 +151,10 @@
 
                             <br>
                             <br>
-                            <button type="submit" class="btn btn-warning text-center"> Modificar </button>
+                            <button type="submit" class="btn btn-warning text-center" > Modificar </button>
                             <br>
                         </form>
+
                     </div>
                 </div>
             </div>

@@ -49,6 +49,7 @@
                     aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <a class="navbar-brand" href="#">
                 <img src="<%=context%>/assets/calAzuc.png" width="30" height="30" class="d-inline-block align-top"
                      alt="">
@@ -61,7 +62,7 @@
 <div class="tab-pane fade show active" id="categoria" role="tabpanel" aria-labelledby="contact-tab">
     <div class="card">
         <div class="row">
-            <div class="card-header col-6">
+            <div class="card-header col-12">
                 Personal
             </div>
 

@@ -52,6 +52,9 @@
                     aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <a class="navbar-brand text-center" style="margin-left: 10rem" href="#">
+                <span class="textTitle"> Bienvenido </span>
+            </a>
             <a class="navbar-brand" href="#">
                 <img src="<%=context%>/assets/calAzuc.png" width="30" height="30" class="d-inline-block align-top"
                      alt="">

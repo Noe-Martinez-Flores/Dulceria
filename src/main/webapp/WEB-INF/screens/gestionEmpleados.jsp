@@ -2,6 +2,7 @@
     Settings | File Templates. --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String context=request.getContextPath(); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,6 +47,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <a class="navbar-brand" href="#">
                 <img src="<%=context%>/assets/calAzuc.png" width="30" height="30"
                      class="d-inline-block align-top" alt="">
@@ -127,9 +129,9 @@
                                 <br>
 
                                 <div class="col-12 col-sm-4">
-                                    <label for="pass" class="form-label">Confirmar Contraseña:</label>
+                                    <label for="confirmPassword" class="form-label">Confirmar Contraseña:</label>
                                     <input style="width: 100% ; height: 35px;" type="password"
-                                           class="form-control text-center" name="pass" id="pass">
+                                           class="form-control text-center" name="confirmPassword" id="confirmPassword">
                                 </div>
 
 
@@ -147,10 +149,33 @@
                             </div>
 
                             <br>
-                            <br>
                             <button type="submit" class="btn btn-primary text-center">Registrar</button>
                             <br>
                         </form>
+                        <c:if test="${message == 'notEquealsPassword'}">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        Las contraseñas deben de ser iguales
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:if>
+                        <c:if test="${message == 'succesInsert'}">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        !Persona registrada con exito!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
             </div>

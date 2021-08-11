@@ -17,20 +17,28 @@ public class ServletCreatePersonal extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DaoPersonal daoPersonal = new DaoPersonal();
-        Personal personal = new Personal();
+        String password = request.getParameter("pass");
+        String confirmPass = request.getParameter("confirmPassword");
+        if (password.equals(confirmPass)){
+            DaoPersonal daoPersonal = new DaoPersonal();
+            Personal personal = new Personal();
 
-        personal.setNombreCompleto(request.getParameter("name"));
-        personal.setNombreUsuario(request.getParameter("username"));
-        personal.setEmail(request.getParameter("email"));
-        personal.setPassword(request.getParameter("pass"));
-        personal.setPhoneNumber(request.getParameter("number"));
+            personal.setNombreCompleto(request.getParameter("name"));
+            personal.setNombreUsuario(request.getParameter("username"));
+            personal.setEmail(request.getParameter("email"));
+            personal.setPassword(request.getParameter("pass"));
+            personal.setPhoneNumber(request.getParameter("number"));
 
-        if (daoPersonal.createPersonal(personal)){
-            request.setAttribute("message", "Persona Registrada");
+            if (daoPersonal.createPersonal(personal)){
+                request.setAttribute("message", "succesInsert");
+            }else{
+                request.setAttribute("message", "Error al registrar");
+            }
+            doGet(request, response);
         }else{
-            request.setAttribute("message", "Error al registrar");
+            request.setAttribute("message","notEquealsPassword");
+            request.getRequestDispatcher("/WEB-INF/screens/gestionEmpleados.jsp").forward(request,response);
         }
-        doGet(request, response);
+
     }
 }

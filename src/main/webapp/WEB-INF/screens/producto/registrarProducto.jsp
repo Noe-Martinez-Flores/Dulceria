@@ -63,7 +63,7 @@
 <section style="margin-top: 4rem;" class="container-fluid  ">
 
 
-    <a class="btn-outline-success" href="<%=context%>/ServletConsultaPersonal"> consultar productos </a>
+    <a class="btn-outline-success" href="<%=context%>/ServletBackToAdminInicio"> consultar productos </a>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="producto" role="tabpanel" aria-labelledby="home-tab">
             <div class="card">

@@ -55,6 +55,7 @@
             <a class="navbar-brand text-center" style="margin-left: 10rem" href="#">
                 <span class="textTitle"> Bienvenido </span>
             </a>
+            <a class="navbar-brand text-center" >${sessionScope.user.rol.puesto}</a>
             <a class="navbar-brand" href="#">
                 <img src="<%=context%>/assets/calAzuc.png" width="30" height="30" class="d-inline-block align-top"
                      alt="">
@@ -84,53 +85,75 @@
                     <div class="card-header col-6">
                         Productos Registrados
                     </div>
+
                     <div class="card-header col-6 text-right">
                         <a href="<%=context%>/ServletAgregarProducto"
                            class="btn btn-success my-2 my-sm-0 size-font-button" style="margin: right 3rem;"
                            type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
                     </div></div>
+                <div class=" col-12 col-md-8">
+                    <form method="post" action="<%=context%>/ServletInicioAdmin" class="form-inline my-2 my-lg-0">
+
+                        <div class=" mr-1">
+                            <input class="form-control mr-sm-2 " autocomplete="on" formaction="/ServletProductos"
+                                   type="search"
+                                   placeholder="BUSCAR" aria-label="Search" id="buscProd" name="buscProd">
+
+                        </div>
+
+                        <button class="btn btn-outline-success my-2 my-sm-0 " type="submit"><span
+                                data-feather="search"></span> Buscar
+                        </button>
+
+
+
+
+                    </form>
+                </div>
                 <div class="card-body">
 
                     <br>
                     <div class="table-responsive">
-                    <table class="table table-hover">
-                        <!-- Define el color de fondo en la cabecera de la tabla -->
-                        <thead  style="background: #ed7074">
+                        <table class="table table-hover">
+                            <!-- Define el color de fondo en la cabecera de la tabla -->
+                            <thead  style="background: #ed7074">
 
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Producto </th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Existencia</th>
-                            <th scope="col">Fecha de caducidad</th>
-                        </tr>
-                        </thead>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${listCategorias}" var="categorias" varStatus="status">
                             <tr>
-                                <td>${status.count}</td>
-
-                                <td>${categorias.nombreCategoria}</td>
-
-
-                                <td class="text-center">
-                                    <form method="get" action="<%=context%>/ServletUpdateCategorias">
-                                        <input type="hidden" name="id" value="${categorias.id}">
-                                        <button title="Modificar" class="btn btn-outline-warning"><i class="fas fa-edit"></i></button>
-                                    </form>
-                                </td>
-
-                                <td class="text-center">
-                                    <form method="post" action="<%=context%>/ServletDeleteCategoria">
-                                        <input type="hidden" name="id" value="${categorias.id}">
-                                        <button title="Eliminar" class="btn btn-outline-danger"><i class="fas fa-times"></i></button>
-                                    </form>
-                                </td>
+                                <th scope="col">#</th>
+                                <th scope="col">Producto </th>
+                                <th scope="col">Existencia</th>
+                                <th scope="col">Fecha de caducidad</th>
+                                <th scope="col">Modificar</th>
+                                <th scope="col">Eliminar</th>
                             </tr>
-                        </c:forEach>
+                            </thead>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${listProd}" var="prod" varStatus="status">
+                                <tr>
+                                    <td>${status.count}</td>
+                                    <td>${prod.producto.nombreProducto}</td>
+                                    <td>${prod.producto.cantidadUnidades}</td>
+                                    <td>${prod.fechaCaducidad}</td>
+
+
+                                    <td class="text-center">
+                                        <form method="get" action="<%=context%>/ServletUpdateProducto">
+                                            <input type="hidden" name="id" value="${prod.producto.id}">
+                                            <button title="Modificar" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                                        </form>
+                                    </td>
+
+                                    <td class="text-center">
+                                        <form method="post" action="<%=context%>/ServletDeleteProducto">
+                                            <input type="hidden" name="id" value="${prod.producto.id}">
+                                            <button title="Eliminar" class="btn btn-danger"><i class="fas fa-times"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
 

@@ -118,6 +118,30 @@ public class DaoMarcas {
 
     }
 
+    public List<Marcas> findMarcas(String marca) {
+        List<Marcas> listMarcas = new ArrayList<>();
+        try {
+            con = ConnectionMySQL.getConnection();
+            String query = "SELECT marcas.id, marcas.Marca_del_producto FROM marcas where marcas.Marca_del_producto  LIKE '%" + marca + "%';";
+            pstm=con.prepareStatement(query);
+            rs=pstm.executeQuery();
+            while (rs.next()){
+
+                Marcas marcas = new Marcas();
+                marcas.setId(rs.getInt("id"));
+                marcas.setMarcaProducto(rs.getString("Marca_del_producto"));
+
+                listMarcas.add(marcas);
+
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        return listMarcas;
+    }
+
     public static void main(String[] args) { //test del backend
         DaoCategoria dao = new DaoCategoria();
         List<Categoria> list = dao.findAll();

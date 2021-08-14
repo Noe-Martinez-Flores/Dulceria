@@ -111,6 +111,30 @@ public class DaoCategoria {
 
     }
 
+    public List<Categoria> findCategoria(String categorias) {
+        List<Categoria> listCategorias = new ArrayList<>();
+        try {
+            con = ConnectionMySQL.getConnection();
+            String query = "SELECT categorias.id, categorias.Nombre_de_la_categoria FROM categorias where  categorias.Nombre_de_la_categoria  LIKE '%"+categorias+"%';";
+            pstm=con.prepareStatement(query);
+            rs=pstm.executeQuery();
+            while (rs.next()){
+
+                Categoria categoria = new Categoria();
+                categoria.setId(rs.getInt("id"));
+                categoria.setNombreCategoria(rs.getString("Nombre_de_la_categoria"));
+
+                listCategorias.add(categoria);
+
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        return listCategorias;
+    }
+
 
     public void closeConnection(){
         try{

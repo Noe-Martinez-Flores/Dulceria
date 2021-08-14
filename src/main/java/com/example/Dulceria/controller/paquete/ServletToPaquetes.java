@@ -9,7 +9,7 @@ import java.io.IOException;
 public class ServletToPaquetes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/screens/paquete/paquetesMain.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/screens/paquete/adminInicioPaquetes.jsp").forward(request,response);
     }
 
     @Override

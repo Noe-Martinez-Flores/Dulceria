@@ -38,7 +38,7 @@
         <div class="collapse" id="navbarToggleExternalContent">
             <div class="bg-danger p-4">
                 <h5 class="text-white h4">Cajero</h5>
-                <a class="nav-link active" href="<%=context%>/index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link active" href="<%=context%>/ServletBackToIndex">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-link" href="#">Features</a>
                 <a class="nav-link" href="#">Pricing</a>
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -50,7 +50,15 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <h3>Cajero</h3>
+            <a class="navbar-brand text-center" style="margin-left: 10rem" href="#">
+                <span class="textTitle"> Bienvenido </span>
+            </a>
+            <a class="navbar-brand text-center" >${sessionScope.user.nombreDeUsuario}</a>
+            <a class="navbar-brand" href="#">
+            <img src="<%=context%>/assets/calAzuc.png" width="30" height="30" class="d-inline-block align-top"
+                 alt="">
+            <span class="text-white h3 "> La calaverita de azúcar</span>
+            </a>
         </nav>
     </div>
 </header>

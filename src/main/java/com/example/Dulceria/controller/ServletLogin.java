@@ -3,6 +3,7 @@ package com.example.Dulceria.controller;
 import com.example.Dulceria.model.Inicio.DaoInicio;
 import com.example.Dulceria.model.Inicio.Inicio;
 import com.example.Dulceria.model.marca.DaoMarcas;
+import com.example.Dulceria.model.producto.DaoProducto;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -37,6 +38,7 @@ public class ServletLogin extends HttpServlet {
             switch (user.getRol().getPuesto()){
                 case "Administrador":
                     //request.setAttribute("listProductos", new DaoProductos().findAll());
+                    request.setAttribute("listProd", new DaoProducto().findAll());
                     request.getRequestDispatcher("/WEB-INF/screens/adminInicio.jsp").forward(request,response);
                     break;
 

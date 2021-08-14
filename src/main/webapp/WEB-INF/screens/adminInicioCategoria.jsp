@@ -91,50 +91,69 @@
                            type="submit"> Agregar <i class="fas fa-plus"></i> </button>
                     </div>
                 </div>
+                <div class=" col-12 col-md-8">
+                    <form method="post" action="<%=context%>/ServletSearchCategoria" class="form-inline my-2 my-lg-0">
+
+                        <div class=" mr-1">
+                            <input class="form-control mr-sm-2 " autocomplete="on"
+                                   type="search"
+                                   placeholder="BUSCAR" aria-label="Search" id="buscCat" name="buscCat">
+
+                        </div>
+
+                        <button class="btn btn-outline-success my-2 my-sm-0 " type="submit"><span
+                                data-feather="search"></span> Buscar
+                        </button>
+
+                    </form>
+                </div>
                 <div class="card-body">
 
                     <br>
-                    <table class="table table-hover">
+                    <div class="table-responsive">
+                        <table class="table table-hover ">
 
-                        <thead style="background: #ed7074">
-                        <tr>
-                            <td>#</td>
-                            <td> Nombre</td>
-
-                            <td class="text-center">Modificar</td>
-                            <td class="text-center"> Eliminar</td>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${listCategorias}" var="categorias" varStatus="status">
+                            <thead style="background: #ed7074">
                             <tr>
-                                <td>${status.count}</td>
+                                <td>#</td>
+                                <td> Nombre</td>
 
-                                <td>${categorias.nombreCategoria}</td>
+                                <td class="text-center">Modificar</td>
+                                <td class="text-center"> Eliminar</td>
 
-
-                                <td class="text-center">
-                                    <form method="get" action="<%=context%>/ServletUpdateCategorias">
-                                        <input type="hidden" name="id" value="${categorias.id}">
-                                        <button title="Modificar" style=" height:100%; width: 43%;"
-                                        class="btn btn-warning size-font-button"><i
-                                            class="fas fa-edit"></i></button>
-                                    </form>
-                                </td>
-
-                                <td class="text-center">
-                                    <form method="post" action="<%=context%>/ServletDeleteCategoria">
-                                        <input type="hidden" name="id" value="${categorias.id}">
-                                        <button title="Eliminar" style=" height:100%; width: 50%; "
-                                                class="btn btn-danger size-font-button"><i
-                                                class="fas fa-times"></i></button>
-                                    </form>
-                                </td>
                             </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${listCategorias}" var="categorias" varStatus="status">
+                                <tr>
+                                    <td>${status.count}</td>
+
+                                    <td>${categorias.nombreCategoria}</td>
+
+
+                                    <td class="text-center">
+                                        <form method="get" action="<%=context%>/ServletUpdateCategorias">
+                                            <input type="hidden" name="id" value="${categorias.id}">
+                                            <button title="Modificar" style=" height:100%; width: 43%;"
+                                                    class="btn btn-warning size-font-button"><i
+                                                    class="fas fa-edit"></i></button>
+                                        </form>
+                                    </td>
+
+                                    <td class="text-center">
+                                        <form method="post" action="<%=context%>/ServletDeleteCategoria">
+                                            <input type="hidden" name="id" value="${categorias.id}">
+                                            <button title="Eliminar" style=" height:100%; width: 50%; "
+                                                    class="btn btn-danger size-font-button"><i
+                                                    class="fas fa-times"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+
 
 
                 </div>

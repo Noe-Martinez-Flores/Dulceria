@@ -1,5 +1,7 @@
 package com.example.Dulceria.model.caducLote;
 
+import com.example.Dulceria.model.categoria.Categoria;
+import com.example.Dulceria.model.marca.Marcas;
 import com.example.Dulceria.model.producto.Producto;
 
 public class CaducLote {
@@ -7,15 +9,21 @@ public class CaducLote {
     private String fechaCaducidad;
     private String numeroLote;
     private Producto producto;
+    private Marcas marcas;
+    private Categoria categoria;
+
 
     public CaducLote(){
 
     }
 
-    public CaducLote(int id, String fechaCaducidad, String numeroLote) {
+    public CaducLote(int id, String fechaCaducidad, String numeroLote, Producto producto, Marcas marcas, Categoria categoria) {
         this.id = id;
         this.fechaCaducidad = fechaCaducidad;
         this.numeroLote = numeroLote;
+        this.producto = producto;
+        this.marcas = marcas;
+        this.categoria = categoria;
     }
 
     public int getId() {
@@ -40,5 +48,29 @@ public class CaducLote {
 
     public void setNumeroLote(String numeroLote) {
         this.numeroLote = numeroLote;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Marcas getMarcas() {
+        return marcas;
+    }
+
+    public void setMarcas(Marcas marcas) {
+        this.marcas = marcas;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }

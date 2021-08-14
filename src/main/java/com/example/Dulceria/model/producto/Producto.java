@@ -7,18 +7,19 @@ import com.example.Dulceria.model.marca.Marcas;
 public class Producto {
     private int id;
     private String nombreProducto;
-    private String cantidadUnidades;
-    private String precioMenudeo;
-    private String precioMayoreo;
+    private int cantidadUnidades;
+    private double precioMenudeo;
+    private double precioMayoreo;
     private Marcas marcasId;
     private Categoria categoriasId;
+
 
 
     public Producto (){
 
     }
 
-    public Producto(int id, String nombreProducto, String cantidadUnidades, String precioMenudeo, String precioMayoreo, Marcas marcasId, Categoria categoriasId) {
+    public Producto(int id, String nombreProducto, int cantidadUnidades, double precioMenudeo, double precioMayoreo, Marcas marcasId, Categoria categoriasId) {
         this.id = id;
         this.nombreProducto = nombreProducto;
         this.cantidadUnidades = cantidadUnidades;
@@ -45,27 +46,27 @@ public class Producto {
         this.nombreProducto = nombreProducto;
     }
 
-    public String getCantidadUnidades() {
+    public int getCantidadUnidades() {
         return cantidadUnidades;
     }
 
-    public void setCantidadUnidades(String cantidadUnidades) {
+    public void setCantidadUnidades(int cantidadUnidades) {
         this.cantidadUnidades = cantidadUnidades;
     }
 
-    public String getPrecioMenudeo() {
+    public double getPrecioMenudeo() {
         return precioMenudeo;
     }
 
-    public void setPrecioMenudeo(String precioMenudeo) {
+    public void setPrecioMenudeo(double precioMenudeo) {
         this.precioMenudeo = precioMenudeo;
     }
 
-    public String getPrecioMayoreo() {
+    public double getPrecioMayoreo() {
         return precioMayoreo;
     }
 
-    public void setPrecioMayoreo(String precioMayoreo) {
+    public void setPrecioMayoreo(double precioMayoreo) {
         this.precioMayoreo = precioMayoreo;
     }
 

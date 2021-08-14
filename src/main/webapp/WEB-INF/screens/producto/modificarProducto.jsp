@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example.Dulceria.model.caducLote.CaducLote" %><%--
   Created by IntelliJ IDEA.
   User: noemt
   Date: 08/08/2021
@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% String context = request.getContextPath();
 %>
 <!DOCTYPE html>
@@ -50,7 +51,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img src="../assets/calAzuc.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img src="<%=context%>/assets/calAzuc.png" width="30" height="30" class="d-inline-block align-top" alt="">
                 <span class="textTitle"> La calaverita de azúcar</span>
             </a>
         </nav>
@@ -59,30 +60,12 @@
 
 <section style="margin-top: 4rem;" class="container-fluid  shadow ">
 
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link " id="home-tab" data-toggle="tab" href="#producto" role="tab"
-               aria-controls="producto" aria-selected="true">Empleados</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#marca" role="tab" aria-controls="marca"
-               aria-selected="false">Marcas</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#categoria" role="tab"
-               aria-controls="categoria" aria-selected="false">Categorias</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#paquete" role="tab"
-               aria-controls="paquete" aria-selected="false">Paquetes</a>
-        </li>
-    </ul>
-    <br>
+
 </section>
 
 <section>
     <article>
-        <div class="card position-relative text-center" style="width: 100%;">
+        <div class="card  text-center" style="width: 100%;">
             <div class="card-header">
                 <small class="text-success">
                     <h1 class="display-6">Modificar Producto</h1>
@@ -94,45 +77,110 @@
                          style="height: 168px; width: 169px;">
                 </figure>
                 <div class="text-success form-floating" style=" position:relative;">
-                    <form id="form" method="POST">
+                    <%CaducLote caducLote = (CaducLote) request.getAttribute("product");%>
+                    <form action="<%=context%>/ServletUpdateProducto" id="form" method="post">
+                        <div class="row text-center ">
+                            <div class="col-12 col-sm-4">
+                                <label for="nameProducto">Nombre del Producto:</label>
+                                <input type="hidden" name="idProducto" value="<%=caducLote.getProducto().getId()%>">
+                                <input style="width: 100% ; height: 35px;" type="text" name="nameProducto"
+                                       id="nameProducto" class="form-control text-center" value="<%=caducLote.getProducto().getNombreProducto()%>" >
+                            </div>
 
-                        <label for="name">Nombre del Producto:</label>
-                        <input style="width: 500px ; height: 35px;" type="text" name="nombre" id="name"
-                               class="form-control text-center">
+                            <br>
+
+                            <div class="col-12 col-sm-4">
+                                <label for="cantidadUnidades">Cantidad de Unidades:</label>
+                                <input style="width: 100% ; height: 35px;" type="number"
+                                       name="cantidadUnidades" id="cantidadUnidades" class="form-control text-center"
+                                       minlength="4" maxlength="8" value="<%=caducLote.getProducto().getCantidadUnidades()%>">
+                            </div>
+
+                            <br>
+
+                            <div class="col-12 col-sm-4">
+                                <label for="marca" class="form-label">Marca:</label>
+                                <select name="marca" id="marca" class="form-control" required>
+
+                                    <option value="">Seleccione</option>
+                                    <c:forEach var="marca" items="${listMarcas}">
+                                        <option ${product.marcas.id == marca.id ? "selected" : ""} value="${marca.id}">${marca.marcaProducto}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row text-aling">
+                            <br>
+
+                            <div class="col-12 col-sm-4" >
+                                <label for="categoria" class="form-label">Categoria:</label>
+                                <select name="categoria" id="categoria" class="form-control" required>
+
+                                    <option value="">Seleccione</option>
+                                    <c:forEach var="categoria" items="${listCategorias}">
+                                        <option ${product.categoria.id == categoria.id ? "selected" : ""} value="${categoria.id}">${categoria.nombreCategoria}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+
+
+                            <br>
+
+                            <div class="col-12 col-sm-4">
+                                <label for="precioMenudeo" class="form-label">Precio de Menudeo:</label>
+                                <input style="width: 100% ; height: 35px;" type="number"
+                                       class="form-control text-center" name="precioMenudeo" id="precioMenudeo"  step="0.01"
+                                       value="<%=caducLote.getProducto().getPrecioMenudeo()%>">
+                            </div>
+
+
+                            <br>
+
+
+                            <div class="col-12 col-sm-4 ">
+                                <label for="precioMayoreo" class="form-label">Precio de Mayoreo:</label><br>
+                                <input style="width: 100% ; height: 35px;" type="number"
+                                       class="form-control text-center" name="precioMayoreo" id="precioMayoreo"  step="0.01"
+                                       value="<%=caducLote.getProducto().getPrecioMayoreo()%>">
+                            </div>
+
+
+                            <br>
+
+
+                            <div class="col-12 col-sm-4 ">
+                                <label for="fechaCaducidad" class="form-label">Fecha de Caducidad:</label><br>
+                                <input style="width: 100% ; height: 35px;" type="date"
+                                       class="form-control text-center" name="fechaCaducidad" id="fechaCaducidad"
+                                       placeholder="**-**-****" value="<%=caducLote.getFechaCaducidad()%>">
+                                <input type="hidden" name="idCaducLote" value="<%=caducLote.getId()%>">
+                            </div>
+
+
+                            <br>
+
+                            <div class="col-12 col-sm-4 ">
+                                <br>
+
+                                <button type="submit" class="btn btn-primary text-center size-font-button">Modificar Producto</button>
+                            </div>
+
+
+                            <br>
+
+
+                            <div class="col-12 col-sm-4 ">
+                                <label for="numeroLote" class="form-label">Número de Lote:</label><br>
+                                <input style="width: 100% ; height: 35px;" type="number"
+                                       class="form-control text-center" name="numeroLote" id="numeroLote"
+                                       value="<%=caducLote.getNumeroLote()%>">
+                            </div>
+                        </div>
 
                         <br>
-                        <label for="">Cantidad de Unidades:</label>
-                        <input style="width: 500px ; height: 35px;" type="number" name="cantUnidad" id="cantUnidad"
-                               class="form-control text-center">
-                        <br>
-                        <label for="">Marca:</label>
-                        <input style="width: 500px ; height: 35px;" type="text" name="marca" id="marca"
-                               class="form-control text-center" minlength="4" maxlength="8">
-                        <br>
 
-                        <label for="" class="form-label">Categoría:</label>
-                        <input style="width: 500px ; height: 35px;" type="text" class="form-control text-center"
-                               id="categoria" name="categoria" aria-describedby="emailHelp">
                         <br>
-
-                        <label for="" class="form-label">Precio de Menudeo:</label><br>
-                        <input style="width: 150px ; height: 35px;" type="text" class=" text-center"
-                               id="precioMenudeo" name="precioMenudeo" placeholder="$0.00">
-                        <br>
-                        <label for="" class="form-label">Precio de Mayoreo:</label><br>
-                        <input style="width: 150px ; height: 35px;" type="text" class=" text-center"
-                               id="precioMayoreo" name="precioMayoreo" placeholder="$0.00">
-                        <br>
-
-                        <label for="">Fecha de Caducidad:</label><br>
-                        <input class="text-center" type="date" name="fechaCaduc" name="fechaCaduc" readonly>
-                        <br>
-
-                        <label for="">Número de Lote:</label>
-                        <input style="width: 500px ; height: 35px;" type="number" name="numLote" id="numLote"
-                               class="form-control text-center">
-                        <button type="submit" class="btn btn-warning text-center">Modificar Producto</button>
-                        <br><br>
                     </form>
                 </div>
             </div>

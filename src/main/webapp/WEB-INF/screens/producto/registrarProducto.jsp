@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: noemt
@@ -63,7 +64,7 @@
 <section style="margin-top: 4rem;" class="container-fluid  ">
 
 
-    <a class="btn-outline-success" href="<%=context%>/ServletBackToAdminInicio"> consultar productos </a>
+    <a class="btn-outline-success" href="<%=context%>/ServletInicioAdmin"> consultar productos </a>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="producto" role="tabpanel" aria-labelledby="home-tab">
             <div class="card">
@@ -91,7 +92,7 @@
                     </figure>
                     <div class=" form-floating" style=" position:relative; color: #2C0348;">
 
-                        <form action="<%=context%>/ServletCreatePersonal" id="form" method="post">
+                        <form action="<%=context%>/ServletAgregarProducto" id="form" method="post">
 
                             <div class="row text-center ">
                                 <div class="col-12 col-sm-4">
@@ -113,9 +114,12 @@
 
                                 <div class="col-12 col-sm-4">
                                     <label for="marca" class="form-label">Marca:</label>
-                                    <input style="width: 100% ; height: 35px;" type="text"
-                                           class="form-control text-center" name="marca" id="marca"
-                                           aria-describedby="emailHelp">
+                                    <select name="marca" id="marca" class="form-control" required>
+                                        <option value="">Seleccione</option>
+                                        <c:forEach var="marca" items="${listMarcas}">
+                                            <option value="${marca.id}">${marca.marcaProducto}</option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                             </div>
 
@@ -123,9 +127,13 @@
                                 <br>
 
                                 <div class="col-12 col-sm-4" >
-                                    <label for="categoria" class="form-label">Categoría:</label>
-                                    <input style="width: 100% ; height: 35px;" type="text"
-                                           class="form-control text-center" name="categoria" id="categoria">
+                                    <label for="categoria" class="form-label">Categoria:</label>
+                                    <select name="categoria" id="categoria" class="form-control" required>
+                                        <option value="">Seleccione</option>
+                                        <c:forEach var="categoria" items="${listCategorias}">
+                                            <option value="${categoria.id}">${categoria.nombreCategoria}</option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
 
 
@@ -134,7 +142,7 @@
                                 <div class="col-12 col-sm-4">
                                     <label for="precioMenudeo" class="form-label">Precio de Menudeo:</label>
                                     <input style="width: 100% ; height: 35px;" type="number"
-                                           class="form-control text-center" name="precioMenudeo" id="precioMenudeo">
+                                           class="form-control text-center" name="precioMenudeo" id="precioMenudeo"  step="0.01">
                                 </div>
 
 
@@ -144,7 +152,7 @@
                                 <div class="col-12 col-sm-4 ">
                                     <label for="precioMayoreo" class="form-label">Precio de Mayoreo:</label><br>
                                     <input style="width: 100% ; height: 35px;" type="number"
-                                           class="form-control text-center" name="precioMayoreo" id="precioMayoreo">
+                                           class="form-control text-center" name="precioMayoreo" id="precioMayoreo"  step="0.01">
                                 </div>
 
 
@@ -182,6 +190,18 @@
 
                             <br>
                         </form>
+                        <c:if test="${message == 'succesInsertProducto'}">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        !Producto registrado con exito!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,12 @@
 package com.example.Dulceria.model.caducLote;
 
+import com.example.Dulceria.model.producto.Producto;
 import com.example.Dulceria.util.ConnectionMySQL;
 import com.example.Dulceria.model.producto.DaoProducto;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.*;
 
 public class DaoCaducLote {
     Connection con;
@@ -74,6 +76,40 @@ public class DaoCaducLote {
             closeConnection();
         }
         return state;
+    }
+
+    public List<CaducLote> findAll (){
+        List<CaducLote> listProductos = new ArrayList<>();
+        try{
+            con = ConnectionMySQL.getConnection();
+            String query = "SELECT caduclote.id as idCaducLot, caduclote.Fecha_de_caducidad,caduclote.Numero_de_lote,\n" +
+                    "productos.id as idProducto,productos.Nombre_del_producto, productos.Cantidad_de_unidades, productos.Precio_de_menudeo, productos.Precio_de_mayoreo,\n" +
+                    "productos.MARCAS_id, productos.CATEGORIAS_id FROM caduclote INNER JOIN productos ON caduclote.PRODUCTOS_id\n" +
+                    "WHERE productos.id = caduclote.PRODUCTOS_id;";
+            statement = con.createStatement();
+            rs = statement.executeQuery(query);
+
+            while (rs.next()){
+                CaducLote caducLote = new CaducLote();
+                caducLote.setId(rs.getInt("idCaducLot"));
+                caducLote.setFechaCaducidad(rs.getString("Fecha_de_caducidad"));
+                caducLote.setNumeroLote(rs.getString("Numero_de_lote"));
+                Producto producto = new Producto();
+                producto.setId(rs.getInt("idProducto"));
+                producto.setNombreProducto(rs.getString("Nombre_del_producto"));
+                producto.setCantidadUnidades(rs.getInt("Cantidad_de_unidades"));
+                producto.setPrecioMenudeo(rs.getDouble("Precio_de_menudeo"));
+                producto.setPrecioMayoreo(rs.getDouble("Precio_de_mayoreo"));
+                caducLote.setProducto(producto);
+                listProductos.add(caducLote);
+            }
+
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        return listProductos;
     }
 
     public void closeConnection(){

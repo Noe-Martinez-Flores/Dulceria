@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="card-header col-6 text-right">
-                        <a href="<%=context%>/ServletAgregarProducto"
+                        <a href="<%=context%>/ServletAgregarPaquetes"
                            class="btn btn-success my-2 my-sm-0 size-font-button" style="margin: right 3rem;"
                            type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
                     </div></div>

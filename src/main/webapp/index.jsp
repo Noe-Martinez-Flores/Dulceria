@@ -53,28 +53,40 @@
                             <form action="<%=context%>/ServletLogin" class="px-4 py-3" method="post">
 
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label" for="UsuarioLogin">Usuario:</label>
-                                    <div class="col-sm-9"><input type="text" class="form-control" name="usuarioLogin" id="usuarioLogin" placeholder="UserUTEZ">
+                                    <label class="col-sm-1 " for="UsuarioLogin" title="usuario"><i class="fas fa-user"></i></label>
+                                    <div class="col-sm-11"><input type="text" class="form-control" name="usuarioLogin" id="usuarioLogin" placeholder="UserUTEZ">
                                     </div>
 
                                 </div>
                                 <br>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label" for="PassLogin">Contraseña: </label>
-                                    <div class="col-sm-9"><input type="password" class="form-control" name="passLogin" id="passLogin" placeholder="******">
+                                    <label class="col-sm-1 " for="PassLogin" title="password"><i class="fas fa-unlock-alt"></i></label>
+                                    <div class="col-sm-11"><input type="password" class="form-control" name="passLogin" id="passLogin" placeholder="******">
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary size-font-button" >Iniciar Sesión </button>
+                                    <button type="submit" class="btn btn-primary size-font-button" >Iniciar Sesión  <i class="fas fa-sign-in-alt"></i> </button>
                                 </div>
                                 <div class="form-group text-center ">
                                     <div class="form-check">
-                                        <a class="nav-link" href="<%=context%>/ServletRecPassword"> ¿Olvidaste la contraseña?</a>
+                                        <a class="nav-link" href="<%=context%>/ServletRedirectEmailRecover"> ¿Olvidaste la contraseña?</a>
                                     </div>
                                 </div>
 
                             </form>
                         </div>
+                        <c:if test="${message == 'fail'}">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        Usuario y/o contraseña incorrectos
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
             </section>

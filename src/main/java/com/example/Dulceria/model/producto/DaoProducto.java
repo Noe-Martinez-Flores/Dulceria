@@ -50,9 +50,9 @@ public boolean createProducto (CaducLote caducLote){
         List<CaducLote> listProd = new ArrayList<>();
         try{
             con = ConnectionMySQL.getConnection();
-            String query = "SELECT productos.id AS prodId, productos.Nombre_del_producto AS nombre, productos.Cantidad_de_unidades as existencia, `caduclote`.id as caducId, `caduclote`.Fecha_de_caducidad as caducidad\n" +
-                    "FROM `caduclote` inner join productos \n" +
-                    "on productos.id = `caduclote`.PRODUCTOS_id ;";
+            String query = "SELECT productos.id AS prodId, productos.Nombre_del_producto AS nombre, productos.Cantidad_de_unidades as existencia, productos.Precio_de_menudeo, productos.Precio_de_mayoreo,\n" +
+                    " `caduclote`.id as caducId, `caduclote`.Fecha_de_caducidad as caducidad \n" +
+                    "FROM `caduclote` inner join productos on productos.id = `caduclote`.PRODUCTOS_id ;";
 
             statement = con.createStatement();
             rs = statement.executeQuery(query);
@@ -65,6 +65,8 @@ public boolean createProducto (CaducLote caducLote){
                 prod.setId(rs.getInt("prodId"));
                 prod.setNombreProducto(rs.getString("nombre"));
                 prod.setCantidadUnidades(rs.getInt("existencia"));
+                prod.setPrecioMenudeo(rs.getDouble("Precio_de_menudeo"));
+                prod.setPrecioMayoreo(rs.getDouble("Precio_de_mayoreo"));
 
                 caduc.setProducto(prod);
                 listProd.add(caduc);

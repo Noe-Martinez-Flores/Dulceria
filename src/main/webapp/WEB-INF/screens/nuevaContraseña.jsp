@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% String context = request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +39,7 @@
     </nav>
 </header>
 
-<div class="container-fluid" style="  margin-top: 1rem;"><a href="<%=context%>/index.html">Regresar <i data-feather="log-in" ></i></a>
+<div class="container-fluid" style="  margin-top: 1rem;"><a href="<%=context%>/ServletBackToIndex">Regresar <i data-feather="log-in" ></i></a>
 </div>
 <div class="text-center ">
     <h1 class="textTitle">Recuperación
@@ -46,35 +47,33 @@
     </h1>
 </div>
 <div class="container-fluid">
-    <div class="row">
+    <div class="m-0 vh-100 row justify-content-center align-items-center">
         <div class="col-12 col-md-2 text-center " >
             <img  width="70%" src="<%=context%>/assets/calAzuc.png" alt="">
         </div>
         <div class="col-12 col-md-8 " >
             <section id=" login">
-                <div style="margin-bottom: 2rem;"class="card">
+                <div style="margin-bottom: 2rem;" class="card">
                     <div class="card-body">
 
-                        <form class="px-4 py-3" method="post">
+                        <form action="<%=context%>/ServletRecoverPassword" class="px-4 py-3" method="post">
 
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" for="contraNueva">Contraseña nueva:</label>
-                                <div class="col-sm-9"><input type="number" class="form-control" id="contraNueva" placeholder="UserUTEZ">
-                                </div>
+                                <label class="col-sm-3 col-form-label" for="password">Contraseña nueva:</label>
+                                <input type="password" name="password" id="password" class="form-control" required>
+
 
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" for="contraNuevaRep">Confirme su contraseña:</label>
-                                <div class="col-sm-9"><input type="number" class="form-control" id="contraNuevaRep" placeholder="UserUTEZ">
-                                </div>
-
+                                <label class="col-sm-3 col-form-label" for="confirmPassword">Confirme su contraseña:</label>
+                                <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" required>
+                                    <input type="hidden" id="idUser" name="idUser" class="form-control" value="${idUser}">
                             </div>
 
                             <div class="text-center">
-                                <a href="<%=context%>/ServletBackToIndex"  type="submit" class="btn btn-primary" ><h4>listo</h4> </a>
+                                <button type="submit" class="btn btn-outline-primary size-font-button">Guardar Nueva Contraseña</button>
                             </div>
                         </form>
-
 
                     </div>
                 </div>

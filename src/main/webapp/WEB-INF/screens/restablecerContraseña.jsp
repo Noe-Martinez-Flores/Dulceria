@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% String context = request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,49 +41,47 @@
 
 <div class="container-fluid" style="  margin-top: 1rem;"><a href="<%=context%>/ServletBackToIndex">Regresar <i data-feather="log-in" ></i></a>
 </div>
-<div class="text-center ">
-    <h1 class="textTitle">Recuperación
-        <h4>Ingresa tus datos para recuperar tu cuenta</h4>
-    </h1>
-</div>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12 col-md-3 text-center " >
-            <img  width="70%" src="<%=context%>/assets/calAzuc.png" alt="">
+<div class="m-0 vh-100 row justify-content-center align-items-center">
+    <div class="card text-center">
+        <div class="card-header">
+            <h1 class="textTitle">Recuperación
+                <h4>Ingresa su correo electronico</h4>
+            </h1>
         </div>
+        <div class="card-body">
+            <img class="img-fluid" style="width: 75%; height: 200px; margin-bottom: 10px;" src="<%=context%>/assets/calAzuc.png">
+            <form action="<%=context%>/ServletSendEmail" method="post">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Correo electrónico:*</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
+                        </div>
+                    </div>
 
-        <div class="col-12 col-md-6 " >
-            <section id=" login">
-                <div style="margin-bottom: 2rem;"class="card">
-                    <div class="card-body">
-
-                        <form class="px-4 py-3" method="post">
-
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" for="UsuarioRecup">Usuario :</label>
-                                <div class="col-sm-9"><input type="text" class="form-control" id="UsuarioRecup" placeholder="UserUTEZ">
-                                </div>
-
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" for="mailRecup">Correo electronico:</label>
-                                <div class="col-sm-9"><input type="email" class="form-control" id="mailRecup" placeholder="UserUTEZ@ejemplo.com">
-                                </div>
-
-                            </div>
-
-                            <div class="text-center">
-                                <a href="<%=context%>/ServletVerificarContraseña" type="submit"  onclick="recuperarContraseña()" class="btn btn-primary" ><h4>Recuperar</h4> </a>
-                            </div>
-                        </form>
-
-
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-outline-primary size-font-button"> Enviar </button>
                     </div>
                 </div>
-            </section>
+            </form>
+
         </div>
+        <c:if test="${message=='notFoundEmail'}">
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        no existe el correo electronico en el sistema
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </c:if>
+
     </div>
+</div>
 </div>
 
 

@@ -1,12 +1,21 @@
 package com.example.Dulceria.model.paquete;
 
 public class Paquete {
+    private int id;
     private String nombrePaquete;
     private int cantidadUnidadesPaquete;
     private double precioPaquete;
 
     public Paquete (){
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Paquete(String nombrePaquete, int cantidadUnidadesPaquete, double precioPaquete) {

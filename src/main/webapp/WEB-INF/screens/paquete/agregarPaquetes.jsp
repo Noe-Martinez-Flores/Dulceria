@@ -64,7 +64,7 @@
 <section style="margin-top: 4rem;" class="container-fluid  ">
 
 
-    <a class="btn-outline-success" href="<%=context%>/ServletInicioAdmin"> consultar productos </a>
+    <a class="btn-outline-success" href="<%=context%>/ServletToPaquetes"> consultar paquetes </a>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="producto" role="tabpanel" aria-labelledby="home-tab">
             <div class="card">
@@ -92,53 +92,36 @@
                     </figure>
                     <div class=" form-floating" style=" position:relative; color: #2C0348;">
 
-                        <form action="<%=context%>/ServletAgregarProducto" id="form" method="post">
+                        <form action="<%=context%>/ServletCrearPaquetes" id="form" method="post">
 
                             <div class="row text-center ">
-                                <div class="col-12 col-sm-3">
+                                <div class="col-12 col-sm-4">
                                     <label for="namePaquete">Nombre del Paquete:</label>
                                     <input style="width: 100% ; height: 35px;" type="text" name="namePaquete"
                                            id="namePaquete" class="form-control text-center">
                                 </div>
-
-                                <br>
-
-                                <div class="col-12 col-sm-3">
-                                    <label for="cantidadUnidadesPaquete">Cantidad de Unidades por Paquete:</label>
+                                <div class="col-12 col-sm-4">
+                                    <label for="cantidadPaquetes">Cantidad de paquetes:</label>
                                     <input style="width: 100% ; height: 35px;" type="number"
-                                           name="cantidadUnidadesPaquete" id="cantidadUnidadesPaquete" class="form-control text-center"
+                                           name="cantidadPaquetes" id="cantidadPaquetes" class="form-control text-center"
                                            minlength="4" maxlength="8">
                                 </div>
 
-                                <br>
-
-                                <div class="col-12 col-sm-3">
-                                    <label for="marca" class="form-label">Producto</label>
-                                    <select name="marca" id="marca" class="form-control" required>
-                                        <option value="">Seleccione</option>
-                                        <c:forEach var="prod" items="${listProducto}">
-                                            <option value="${prod.producto.id}">${prod.producto.nombreProducto}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row text-aling">
-                                <br>
-
-                                <div class="col-12 col-sm-3>
-                                    <label for="precioPaquete" class="form-label">Precio del paquete</label>
+                                <div class="col-12 col-sm-4">
+                                    <label for="precioPaquete"
+                                     class="form-label">Precio del paquete</label>
                                     <input style="width: 100% ; height: 35px;" type="number"
                                            class="form-control text-center" name="precioPaquete" id="precioPaquete"  step="0.01">
                                 </div>
-
-                            <div class="col-12 col-sm-4 ">
                                 <br>
-
-                                <button type="submit" class="btn btn-primary text-center size-font-button">Registrar Paquete</button>
+                                <br>
+                                <br>
+                                <div class="col-12 col-sm-12 text-center ">
+                                    <button type="submit" class="btn btn-primary text-center size-font-button"> Registrar Paquete </button>
+                                </div>
                             </div>
 
-                            </div>
+
 
                         </form>
                         <c:if test="${message == 'succesInsertProducto'}">

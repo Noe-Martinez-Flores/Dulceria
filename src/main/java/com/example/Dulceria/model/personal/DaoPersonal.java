@@ -128,6 +128,75 @@ public class DaoPersonal {
 
     }
 
+    public String updateCodePersonal (String email){
+        String state = "";
+        try{
+            con = ConnectionMySQL.getConnection();
+            String query = "SELECT personal.id FROM personal WHERE personal.Correo_Electronico = ?;";
+            pstm = con.prepareStatement(query);
+            pstm.setString(1,email);
+            rs = pstm.executeQuery();
+            if (rs.next()){
+                int id = rs.getInt("id");
+                String query2 = "UPDATE personal set personal.Codigo = ? WHERE personal.id = ?;";
+                pstm = con.prepareStatement(query2);
+                String code = id + email+"Recover";
+                pstm.setString(1,code);
+                pstm.setInt(2,id);
+                if (pstm.executeUpdate() == 1){
+                    state = code;
+                }else{
+                    state = "fail";
+                }
+
+            }else{
+                state = "notFoundEmail";
+            }
+
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        return state;
+    }
+
+    public int getIdByCode (String code){
+        int id = 0;
+        try{
+            con = ConnectionMySQL.getConnection();
+            String query = "SELECT personal.id FROM personal WHERE personal.Codigo = ?;";
+            pstm = con.prepareStatement(query);
+            pstm.setString(1,code);
+            rs = pstm.executeQuery();
+            if(rs.next()){
+                id = rs.getInt("id");
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        return id;
+    }
+
+    public boolean updatePassword (Personal personal){
+        boolean state = false;
+        try{
+            con = ConnectionMySQL.getConnection();
+            String query = "UPDATE personal SET personal.Contraseña = ?, personal.Codigo = NULL  WHERE personal.id = ?;";
+            pstm = con.prepareStatement(query);
+            pstm.setString(1,personal.getPassword());
+            pstm.setInt(2,personal.getId());
+            state = pstm.executeUpdate() == 1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        return state;
+    }
+
 
 
 

@@ -69,7 +69,7 @@
     <h1>Bienvenido <span></span></h1>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="productos" type="submit" href="<%=context%>/ServletInicioAdmin">Paquetes</a>
+            <a class="nav-link" id="productos" type="submit" href="<%=context%>/ServletInicioAdmin">Productos</a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="paquetes-tab" type="submit" href="<%=context%>/ServletToPaquetes">Paquetes</a>
@@ -80,14 +80,20 @@
             <div class="card">
                 <div class="row">
                     <div class="card-header col-6">
-                        Productos Registrados
+                        Paquetes Registrados
                     </div>
 
-                    <div class="card-header col-6 text-right">
+                    <div class="card-header col-3 text-right">
                         <a href="<%=context%>/ServletAgregarPaquetes"
                            class="btn btn-success my-2 my-sm-0 size-font-button" style="margin: right 3rem;"
-                           type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
-                    </div></div>
+                           type="submit"> Crear un paquete <i class="fas fa-plus"></i>  </a>
+                    </div>
+                    <div class="card-header col-3 text-right">
+                        <a href="<%=context%>/ServletCrearPaquetes"
+                           class="btn btn-success my-2 my-sm-0 size-font-button" style="margin: right 3rem;"
+                           type="submit"> Agregar productos a un paquete <i class="fas fa-plus"></i>  </a>
+                    </div>
+                </div>
                 <div class=" col-12 col-md-8">
                     <form method="post" action="<%=context%>/ServletInicioAdmin" class="form-inline my-2 my-lg-0">
 
@@ -120,7 +126,7 @@
                                 <th scope="col">Nombre del Paquete</th>
                                 <th scope="col">Productos</th>
                                 <th scope="col">Precio</th>
-                                <th scope="col">Cantidad de Unidades</th>
+                                <th scope="col">Cantidad de Paquetes</th>
                                 <th scope="col">Modificar</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
@@ -129,12 +135,19 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${listProd}" var="prod" varStatus="status">
+                            <c:forEach items="${listPaquete}" var="prod" varStatus="status">
                                 <tr>
+
                                     <td>${status.count}</td>
-                                    <td>${prod.producto.nombreProducto}</td>
-                                    <td>${prod.producto.cantidadUnidades}</td>
-                                    <td>${prod.fechaCaducidad}</td>
+                                    <td>${prod.paquete.nombrePaquete}</td>
+                                    <td>
+                                        <form method="get" action="<%=context%>/ServletVerProductosPaq">
+                                            <input type="hidden" name="id" value="${prod.paquete.id}">
+                                            <button title="Ver Productos" class="btn btn-secondary">Ver Productos</button>
+                                        </form>
+                                    </td>
+                                    <td>${prod.paquete.precioPaquete}</td>
+                                    <td>${prod.paquete.cantidadUnidadesPaquete}</td>
 
 
                                     <td class="text-center">
@@ -164,6 +177,7 @@
             </div>
 
         </div>
+    </div>
 </section>
 <!-- Modal -->
 <div class="modal fade" id="productoModal" data-backdrop="static" data-keyboard="false" tabindex="-1"

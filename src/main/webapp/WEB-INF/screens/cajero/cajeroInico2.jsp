@@ -64,8 +64,10 @@
 </header>
 <section class="container-fluid topCard">
     <h2 class="text-center">Ventas</h2>
-    ${lista.size()}
-    ${lista}
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="BUSCAR" aria-label="Search">
+        <button type="button" class="btn btn-outline-success my-2 my-sm-0"><span data-feather="shopping-cart"></span> Agregar al carrito</button>
+    </form>
     <br>
     <table class="table">
         <thead class="btn-danger">
@@ -73,43 +75,34 @@
             <th scope="col">#</th>
             <th scope="col">Producto </th>
             <th scope="col">Precio</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">cantidad</th>
+            <th scope="col">Eliminar</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${listProductos}" var="prod" varStatus="status">
-            <form action="<%=context%>/ServletVentas" method="get">
-                <input type="hidden" name="id" value="${prod.producto.id}">
-                <input type="hidden" name="tipo" value="producto">
-                <input type="hidden" name="lista" value="${lista}">
-                <tr>
-                    <td>Producto</td>
-                    <td>${prod.producto.nombreProducto}</td>
-                    <td>${prod.producto.precioMenudeo}</td>
-                    <td class="align-middle"><input type="text" name="cantidad" class="form-control my-2 my-sm-0 " placeholder="Cantidad"></td>
-                    <td class="align-middle"><button type="submit">Agregar</button></td>
-                </tr>
-            </form>
-        </c:forEach>
-        <c:forEach items="${lisPaquetes}" var="paq" varStatus="status">
-        <form action="<%=context%>/ServletVentas" method="get">
-            <input type="hidden" name="id" value="${paq.id}">
-            <input type="hidden" name="tipo" value="paquete">
-            <input type="hidden" name="lista" value="${lista}">
-            <tr>
-                <td>Paquete</td>
-                <td>${paq.nombrePaquete}</td>
-                <td>${paq.precioPaquete}</td>
-                <td class="align-middle"><input type="text" name="cantidad" class="form-control my-2 my-sm-0 " placeholder="Cantidad"></td>
-                <td class="align-middle"><button type="submit">Agregar</button></td>
-            </tr>
-        </form>
-
-        </c:forEach>
-
+        <tr class="align-middle">
+            <th class="align-middle" scope="row">1</th>
+            <td class="align-middle">bombones
+            </td>
+            <td class="align-middle">50</td>
+            <td class="align-middle">12</td>
+            <td class="align-middle"><button type="button" class="btn btn-outline-danger">Quitar</button>
+            </td>
+        </tr>
         </tbody>
     </table>
+    <div class="text-center footer row">
+        <div class=" text-right col-4 col-xl-7"><button type="button" class="btn btn-outline-success my-2 my-sm-0"><span data-feather="shopping-cart"></span> Realizar la venta</button>
+        </div>
+        <div class="col-2 col-xl-2"><button type="button" class="btn btn-outline-danger">Cancelar</button>
+        </div>
+        <div class="col-4 col-xl-1"> <label for="">Total a pagar: $</label>
+        </div>
+        <div class="col-2 col-xl-2"><input type="text" class="form-control my-2 my-sm-0" placeholder="50">
+        </div>
+
+
+    </div>
 </section>
 <script src="https://unpkg.com/feather-icons"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

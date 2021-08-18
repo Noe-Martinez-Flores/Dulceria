@@ -78,8 +78,8 @@ public class Email {
                     "                <tr>\n" +
                     "                  <td align=\"center\" style=\" padding:0 0 36px 0;color:#153643;\">\n" +
                     "                    <h1 style=\"font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;\">Recuperación de la contraseña</h1>\n" +
-                    "                    <p style=\"margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;\">Usuario admin tu codigo de verificacion es :</p>\n" +
-                    "                    <p style=\"margin:0 0 12px 0;font-size:26px;line-height:24px;font-family:Arial,sans-serif;\"> 258346</p>\n" +
+                    "                    <p style=\"margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;\">Solicito un cambio de Contraseña, si reconoce este acto prosiga :</p>\n" +
+                    "                    <p style=\"margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;\"><a href=\""+ip+"?code="+codigo+"\" style=\"color:#0073ba;text-decoration:underline;\">¡Da CLIC aquí!</a></p>\n" +
                     "                    \n" +
                     "                  </td>\n" +
                     "                </tr>\n" +

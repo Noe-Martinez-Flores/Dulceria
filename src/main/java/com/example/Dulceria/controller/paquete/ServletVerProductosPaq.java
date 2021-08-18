@@ -7,12 +7,14 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "ServletToPaquetes", value = "/ServletToPaquetes")
-public class ServletToPaquetes extends HttpServlet {
+@WebServlet(name = "ServletVerProductosPaq", value = "/ServletVerProductosPaq")
+public class ServletVerProductosPaq extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("listPaquete", new DaoPaquete().consultarPaquetes());
-        request.getRequestDispatcher("/WEB-INF/screens/paquete/adminInicioPaquetes.jsp").forward(request,response);
+        int idPaquete = Integer.parseInt(request.getParameter("id"));
+        request.setAttribute("paquete", new DaoPaquete().retornarPaquete(idPaquete));
+        request.setAttribute("listProd", new DaoPaquete().consultarProdPaq(idPaquete));
+        request.getRequestDispatcher("/WEB-INF/screens/paquete/VerProductosPaq.jsp").forward(request,response);
     }
 
     @Override

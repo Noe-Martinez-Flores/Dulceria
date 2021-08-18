@@ -12,6 +12,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.Date;
 
 @WebServlet(name = "ServletAgregarProducto", value = "/ServletAgregarProducto")
 public class ServletAgregarProducto extends HttpServlet {
@@ -31,8 +32,12 @@ public class ServletAgregarProducto extends HttpServlet {
         int idCategorias = Integer.parseInt(request.getParameter("categoria"));
 
 
+        Date nuevo = new Date();
+        nuevo.setHours(12);
+
         caducLote.setFechaCaducidad(request.getParameter("fechaCaducidad"));
         caducLote.setNumeroLote(request.getParameter("numeroLote"));
+        String fecha = request.getParameter("fechaCaducidad");
 
         Producto producto = new Producto();
 

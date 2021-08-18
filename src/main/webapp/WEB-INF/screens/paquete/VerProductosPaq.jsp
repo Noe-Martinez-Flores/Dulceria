@@ -82,15 +82,11 @@
         <div class="tab-pane fade show active" id="producto" role="tabpanel" aria-labelledby="home-tab">
             <div class="card">
                 <div class="row">
-                    <div class="card-header col-6">
-                        Productos Registrados
+                    <div class="card-header col-12">
+                        Productos que contiene el paquete: ${ paquete.getNombrePaquete()}
                     </div>
 
-                    <div class="card-header col-6 text-right">
-                        <a href="<%=context%>/ServletAgregarProducto"
-                           class="btn btn-success my-2 my-sm-0 size-font-button" style="margin: right 3rem;"
-                           type="submit"> Agregar <i class="fas fa-plus"></i>  </a>
-                    </div></div>
+                    </div>
                 <div class=" col-12 col-md-8">
                     <form method="post" action="<%=context%>/ServletInicioAdmin" class="form-inline my-2 my-lg-0">
 
@@ -114,6 +110,7 @@
 
                     <br>
                     <div class="table-responsive">
+
                         <table class="table table-hover">
                             <!-- Define el color de fondo en la cabecera de la tabla -->
                             <thead  style="background: #ed7074">
@@ -121,9 +118,9 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Producto </th>
-                                <th scope="col">Existencia</th>
-                                <th scope="col">Fecha de caducidad</th>
-                                <th scope="col">Modificar</th>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Cantidad</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
                             </thead>
@@ -135,41 +132,26 @@
                                 <tr>
                                     <td>${status.count}</td>
                                     <td>${prod.producto.nombreProducto}</td>
-                                    <td>${prod.producto.cantidadUnidades}</td>
-                                    <td>${prod.fechaCaducidad}</td>
+                                    <td>${prod.producto.marcasId.marcaProducto}</td>
+                                    <td>${prod.producto.categoriasId.nombreCategoria}</td>
+                                    <td>${prod.cantidadDeProductos} </td>
 
 
-                                    <td class="text-center">
-                                        <form method="get" action="<%=context%>/ServletUpdateProducto">
-                                            <input type="hidden" name="id" value="${prod.producto.id}">
-                                            <button title="Modificar"
-                                                    class="btn btn-warning size-font-button"><i
-                                                    class="fas fa-edit"></i></button>
-                                        </form>
-                                    </td>
 
                                     <td class="text-center">
-                                        <form method="post" action="<%=context%>/ServletDeleteProducto">
+                                        <form method="post" action="<%=context%>/ServletDeleteProductoPaq">
                                             <input type="hidden" name="id" value="${prod.producto.id}">
-                                            <button title="Eliminar"
-                                                    class="btn btn-danger size-font-button"><i
-                                                    class="fas fa-times"></i></button>
+                                            <button title="Eliminar" class="btn btn-danger"><i class="fas fa-times"></i></button>
                                         </form>
                                     </td>
                                 </tr>
                             </c:forEach>
-                        </tbody>
-                    </table>
-
-                    <!-- Button trigger modal -->
-
-
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-
             </div>
         </div>
-
-    </div>
 </section>
 <!-- Modal -->
 <div class="modal fade" id="productoModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
